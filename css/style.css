@@ -144,7 +144,7 @@ body {
 }
 .item1 .project-content:hover .desc-bg-container {
   width: 60%;
-  margin-right: 60%;
+  margin-right: 40%;
 }
 .item2 .project-content .description {
   width: 40%;
@@ -169,6 +169,16 @@ body {
 .item3 .project-content:hover .description {
   position: relative;
   right: 0%;
+}
+.actdive .description,
+.active-desc {
+  width: 30%!important;
+  right: 0%!important;
+}
+.actdive .desc-bg-container,
+.active-desc-bg-container {
+  width: 30%!important;
+  margin-right: 70%!important;
 }
 #contact-container {
   background-color: #52b74f;

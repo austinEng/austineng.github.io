@@ -66,14 +66,59 @@ $(document).ready(function() {
             $(this).toggleClass('active', 0, function(){
                 pckry.layout();
             });
+            var width = $(this).width();
             $(this).toggleClass('active');
+            var desc = $(this).find('.description');
+            var descBgCon = $(this).find('.desc-bg-container');
+            var descBg = $(this).find('.desc-bg');
+            desc.animate({width: width*0.3},300, function(){
+                desc.addClass('active-desc');
+            });
+            descBgCon.css('transition','0').animate({marginRight: width*0.7, width: width*0.3},300, function(){
+                descBgCon.addClass('active-desc-bg-container');
+            });
+            descBg.animate({width: width},300);
+
             $(this).toggleClass('active', 300, function(){
                 pckry.layout();
             });
         } else {
+            $(this).removeClass('active');
+            var width = $(this).width();
+            $(this).addClass('active');
+            var desc = $(this).find('.description');
+            var descBgCon = $(this).find('.desc-bg-container');
+            var descBg = $(this).find('.desc-bg');
+            if($(this).hasClass('item2')) {
+                desc.removeClass('active-desc').animate({width: width*0.4},300, function(){
+                    desc.css('width','');
+                });
+                descBgCon.removeClass('active-desc-bg-container').animate({marginRight: width*0.6, width: width*0.4},300, function(){
+                    descBgCon.css('marginRight','').css('width','').css('transition','');
+                });
+                descBg.animate({width: width},300);
+            }
+            if($(this).hasClass('item1')) {
+                desc.removeClass('active-desc').animate({width: width*0.6},300, function(){
+                    desc.css('width','');
+                });
+                descBgCon.removeClass('active-desc-bg-container').animate({marginRight: width*0.4, width: width*0.6},300, function(){
+                    descBgCon.css('marginRight','').css('width','').css('transition','');
+                });
+                descBg.animate({width: width},300);
+            }
+
+
+            //desc.removeClass('active-desc', 300);
+            //descBgCon.removeClass('active-desc-bg-container', 300);
+            //deskBg.css('width','');
+            //$(this).find('.description').removeClass('active-desc', 300);
+            //$(this).find('.desc-bg-container').removeClass('active-desc-bg-container', 300);
             projects.removeClass('active', 300, function(){
                 pckry.layout();
             });
+            $(this).find('.description').removeClass('active-desc', 300);
+            $(this).find('.desc-bg-container').removeClass('active-desc-bg-container', 300);
         }
 
     });
