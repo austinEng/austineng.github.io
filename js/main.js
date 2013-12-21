@@ -59,10 +59,39 @@ $(document).ready(function() {
             }
         });*/
     });
+    $('.project').click(function(event){
+        var projects = $('.project');
+        if (!($(this).hasClass('active'))) {
+            projects.removeClass('active', 300);
+            $(this).toggleClass('active', 0, function(){
+                pckry.layout();
+            });
+            $(this).toggleClass('active');
+            $(this).toggleClass('active', 300, function(){
+                pckry.layout();
+            });
+        } else {
+            projects.removeClass('active', 300, function(){
+                pckry.layout();
+            });
+        }
+
+    });
 
     var container = document.querySelector('#project-wrapper');
     var pckry = new Packery( container, {
         itemSelector: '.project'
     });
     pckry.layout();
+
+
+});
+$(window).load(function(){
+    /*$('.description').each(function(event){
+        var bg = $(this).parent();
+        console.log(bg);
+        $(this).blurjs({
+            source: bg,
+        });
+    });*/
 });
