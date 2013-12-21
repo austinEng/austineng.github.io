@@ -87,13 +87,31 @@ $(document).ready(function() {
     $('.desc-bg').each(function(){
         $(this).css('backgroundImage',$(this).parent().parent().css('backgroundImage'));
     });
-
-});
-window.setInterval(function(){
-    $('.desc-bg').each(function(){
-        $(this).css('width',$(this).parent().parent().width());
+    $('.item2 .project-content').hover(function(){
+        var count=0;
+        var elem=$(this);
+        var a = window.setInterval(function(){
+            var bg = elem.find('.desc-bg');
+            bg.css('width',bg.parent().parent().width());
+            count++;
+            if (count>6) {
+                clearInterval(a);
+            }
+        },50);
+    }, function(){
+        var count=0;
+        var elem=$(this);
+        var a = window.setInterval(function(){
+            var bg = elem.find('.desc-bg');
+            bg.css('width',bg.parent().parent().width());
+            count++;
+            if (count>6) {
+                clearInterval(a);
+            }
+        },50);
     });
-},500);
+});
+
 $(window).load(function(){
     /*$('.description').each(function(event){
         var bg = $(this).parent();
