@@ -59,7 +59,7 @@ $(document).ready(function() {
             }
         });*/
     });
-    $('.project').click(function(event){
+    $('.project.clickable').click(function(event){
         var projects = $('.project');
         if (!($(this).hasClass('active'))) {
             projects.removeClass('active', 300);
