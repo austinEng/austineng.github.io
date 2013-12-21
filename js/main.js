@@ -84,8 +84,16 @@ $(document).ready(function() {
     });
     pckry.layout();
 
+    $('.desc-bg').each(function(){
+        $(this).css('backgroundImage',$(this).parent().parent().css('backgroundImage'));
+    });
 
 });
+window.setInterval(function(){
+    $('.desc-bg').each(function(){
+        $(this).css('width',$(this).parent().parent().width());
+    });
+},500);
 $(window).load(function(){
     /*$('.description').each(function(event){
         var bg = $(this).parent();
