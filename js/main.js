@@ -130,7 +130,7 @@ $(document).ready(function() {
     pckry.layout();
 
     $('.desc-bg').each(function(){
-        $(this).css('backgroundImage',$(this).parent().parent().css('backgroundImage'));
+        $(this).css('backgroundImage','url("'+$(this).parent().parent().css('backgroundImage').slice(4,-5)+'_blur.png")');
     });
     $('.project-content').hover(function(){
         var count=0;
