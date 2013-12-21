@@ -87,7 +87,7 @@ $(document).ready(function() {
     $('.desc-bg').each(function(){
         $(this).css('backgroundImage',$(this).parent().parent().css('backgroundImage'));
     });
-    $('.item2 .project-content').hover(function(){
+    $('.project-content').hover(function(){
         var count=0;
         var elem=$(this);
         var a = window.setInterval(function(){
