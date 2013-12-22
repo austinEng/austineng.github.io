@@ -133,10 +133,10 @@ $(document).ready(function() {
                 descBg.animate({width: width},300);
             }
             if($(this).hasClass('item1')) {
-                desc.removeClass('active-desc').animate({width: width*0.6},300, function(){
+                desc.removeClass('active-desc').animate({width: width*0.7},300, function(){
                     desc.css('width','');
                 });
-                descBgCon.removeClass('active-desc-bg-container').animate({marginRight: width*0.4, width: width*0.6},300, function(){
+                descBgCon.removeClass('active-desc-bg-container').animate({marginRight: width*0.3, width: width*0.7},300, function(){
                     descBgCon.css('marginRight','').css('width','').css('transition','');
                 });
                 descBg.animate({width: width},300);
