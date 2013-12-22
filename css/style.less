@@ -25,6 +25,7 @@ html, body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: 'Alegreya Sans', sans-serif;
 }
 #nav {
   margin-bottom: 0px;
@@ -147,13 +148,20 @@ html, body {
   width: 250%;
 }
 .description {
-  z-index: 1;
-}
-.project-content .description {
   position: relative;
   padding: 20px;
   background-color: rgba(120, 120, 120, 0.4);
   color: white;
+  z-index: 1;
+  font-size: 20px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+.description > div {
+  font-size: 40px;
+  color: @main-dark-color;
+}
+.description a {
+  color: @main-light-color;
 }
 .item1 .project-content .description {
   width: 60%;
@@ -236,6 +244,27 @@ html, body {
   background-color: rgba(120, 120, 120, 0.4);
   //height: 478px;
 }
+.active .gallery iframe {
+  display: block;
+}
+.gallery iframe {
+  display: none;
+  border: 0px;
+  position: relative;
+  left: 1%;
+  top: 2%;
+  height: 128%;
+  width: 126.6666%;
+  margin-left: 2%;
+  margin-right: 2%;
+  zoom: 0.5;
+  -moz-transform: scale(0.75);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.75);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.75);
+  -webkit-transform-origin: 0 0;
+}
 .galPic {
   display: none;
   position: relative;
@@ -257,7 +286,7 @@ html, body {
 .galPic:first-of-type {
   display: block;
 }
-#painting.active .desc-bg-container, #fall.active .desc-bg-container, #ny.active .desc-bg-container {
+#painting.active .desc-bg-container, #fall.active .desc-bg-container, #ny.active .desc-bg-container, .active .desc-bg-container {
   width:100%!important;
 }
 .gal-btn {
