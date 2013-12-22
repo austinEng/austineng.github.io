@@ -168,15 +168,47 @@ body {
   position: relative;
   right: 0%;
 }
-.actdive .description,
 .active-desc {
   width: 30%!important;
   right: 0%!important;
+  overflow-y: auto!important;
 }
-.actdive .desc-bg-container,
 .active-desc-bg-container {
   width: 30%!important;
   margin-right: 70%!important;
+}
+.gallery {
+  opacity: 0;
+  transition: all 0.4s;
+  width: 70%;
+  height: 100%;
+  position: relative;
+  top: -200%;
+  left: 30%;
+  overflow: auto;
+}
+.active .gallery {
+  opacity: 1;
+}
+.galPic {
+  position: relative;
+  left: 1%;
+  top: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  height: 96%;
+  width: 95%;
+  margin-left: 2%;
+  margin-right: 2%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.galPic:first-of-type {
+  display: block;
+}
+#painting.active .desc-bg-container {
+  width: 100%!important;
 }
 #contact-container {
   background-color: #52b74f;

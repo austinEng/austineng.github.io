@@ -120,7 +120,6 @@ $(document).ready(function() {
             $(this).find('.description').removeClass('active-desc', 300);
             $(this).find('.desc-bg-container').removeClass('active-desc-bg-container', 300);
         }
-
     });
 
     var container = document.querySelector('#project-wrapper');
@@ -130,7 +129,7 @@ $(document).ready(function() {
     pckry.layout();
 
     $('.desc-bg').each(function(){
-        $(this).css('backgroundImage','url("'+$(this).parent().parent().css('backgroundImage').slice(4,-5)+'_blur.png")');
+        $(this).css('backgroundImage','url("'+$(this).parent().parent().css('backgroundImage').slice(4,-5)+'_blur.jpg")');
     });
     $('.project-content').hover(function(){
         var count=0;
