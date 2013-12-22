@@ -63,6 +63,16 @@ $(document).ready(function() {
         var projects = $('.project');
         if (!($(this).hasClass('active'))) {
             projects.removeClass('active', 300);
+            var descs = projects.find('.active-desc');
+            for (var i=0; i< descs.length; ++i) {
+                $(descs[i]).css('width','').removeClass('active-desc');
+            }
+            var descBgs = projects.find('.active-desc-bg-container');
+            for (var i=0; i< descBgs.length; ++i) {
+                $(descBgs[i]).css('transition','').css('marginRight','').css('width','').removeClass('active-desc-bg-container');
+            }
+            //projects.find('.active-desc-bg-container').css('transition','').css('marginRight','').css('width','').removeClass('.active-desc-bg-container');
+
             $(this).toggleClass('active', 0, function(){
                 pckry.layout();
             });
@@ -79,8 +89,16 @@ $(document).ready(function() {
             });
             descBg.animate({width: width},300);
 
+            manageGalBtns($(this).find('.gallery'));
+
             $(this).toggleClass('active', 300, function(){
                 pckry.layout();
+                var item = $(this);
+                setTimeout(function(){
+                    $('body').animate({
+                        scrollTop: item.offset().top-100
+                    }, 400);
+                },300);
             });
         } else {
             $(this).removeClass('active');
@@ -154,14 +172,35 @@ $(document).ready(function() {
             }
         },50);
     });
+    $('.gal-btn').click(function(e){
+        e.stopPropagation();
+        var pic = $($(this).parent().find('.galPic:visible')[0]);
+        pic.css('display','none');
+        if ($(this).hasClass('left-button')) {
+            pic.prev().css('display','block');
+        }
+        if ($(this).hasClass('right-button')) {
+            pic.next().css('display','block');
+        }
+
+        manageGalBtns($(this).parent());
+    });
 });
 
+function manageGalBtns(gal) {
+    var pic = $(gal.find('.galPic:visible')[0]);
+    if (typeof(pic.prev('.galPic')[0])=="undefined") {
+        $(gal.find('.left-button')[0]).css('display','none');
+    } else {
+        $(gal.find('.left-button')[0]).css('display','block');
+    }
+    if (typeof(pic.next('.galPic')[0])=="undefined") {
+        $(gal.find('.right-button')[0]).css('display','none');
+    } else {
+        $(gal.find('.right-button')[0]).css('display','block');
+    }
+}
+
 $(window).load(function(){
-    /*$('.description').each(function(event){
-        var bg = $(this).parent();
-        console.log(bg);
-        $(this).blurjs({
-            source: bg,
-        });
-    });*/
+
 });
