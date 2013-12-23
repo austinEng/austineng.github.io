@@ -75,6 +75,7 @@ body {
 }
 #project-toggles .active {
   color: #43b117;
+  text-shadow: 0.5px 0px 0px #43b117;
 }
 #project-wrapper {
   transition: height ease 0.3s;
@@ -84,7 +85,7 @@ body {
   padding: 10px;
 }
 .noproject {
-  display: none;
+  height: auto;
   padding: 20px;
   background-color: white;
   text-align: center;

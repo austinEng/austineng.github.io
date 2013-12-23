@@ -1,5 +1,8 @@
 $(document).ready(function() {
+    var toggleClickCount=0;
+
     $('#project-toggles a').click(function(){
+        toggleClickCount++;
         var toggles = $('#project-toggles a');
         $(this).toggleClass('active');
         if ($(this).attr('id')=='all') {
@@ -46,7 +49,12 @@ $(document).ready(function() {
         if (actives.length==0) {
             $('.noproject').delay(400).fadeIn(300);
         }else {
-            $('.noproject').fadeOut(100);
+            if (toggleClickCount >= 3) {
+                $('.noproject').fadeOut(100);
+            }
+        }
+        if (toggleClickCount == 3) {
+            $('.noproject').fadeOut(300);
         }
         pckry.layout();
         /*$('.project').each(function(){
