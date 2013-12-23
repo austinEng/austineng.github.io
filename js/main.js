@@ -116,7 +116,7 @@ $(document).ready(function() {
                 pckry.layout();
                 var item = $(this);
                 setTimeout(function(){
-                    $('body').animate({
+                    $('body,html').animate({
                         scrollTop: item.offset().top-100
                     }, 400);
                 },300);
