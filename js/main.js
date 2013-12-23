@@ -190,7 +190,7 @@ $(document).ready(function() {
             descBg.animate({width: width},300);
 
             manageGalBtns($(this).find('.gallery'));
-            reloadIframe($(this).find('iframe'));
+            //reloadIframe($(this).find('iframe'));
 
             $(this).toggleClass('active', 300, function(){
                 pckry.isotope({filter: visibles});
@@ -344,11 +344,11 @@ function manageGalBtns(gal) {
         $(gal.find('.right-button')[0]).css('display','block');
     }
 }
-function reloadIframe(frame) {
+/*function reloadIframe(frame) {
     setTimeout(function(){
         frame.attr('src', frame.attr('src'))
     }, 200);
-}
+}*/
 var QueryString = function () {
     // This function is anonymous, is executed immediately and
     // the return value is assigned to QueryString!
