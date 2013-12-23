@@ -95,6 +95,9 @@ $(document).ready(function() {
             ts[i]=$(t[i]).attr('id');
         }
         var ts= ts.join('+');
+        if (ts=="") {
+            ts="none"
+        }
         setGetParameter('toggles', ts)
 
     });
