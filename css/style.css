@@ -20,6 +20,13 @@ body {
   -ms-user-select: none;
   user-select: none;
   font-family: 'Quicksand', sans-serif;
+}
+#greeting,
+#project-toggles,
+.noproject,
+.description > div,
+.description > a,
+#contact-container {
   text-transform: lowercase;
 }
 #nav {
