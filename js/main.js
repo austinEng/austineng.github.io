@@ -118,7 +118,6 @@ $(document).ready(function() {
         }
         var stateObj = { foo: "bar" };
         history.pushState(stateObj, url, url);
-        //window.location.href = url;
     }
 
     $('#project-outer-container').click(function(e){
@@ -228,6 +227,7 @@ $(document).ready(function() {
 
     if (QueryString.toggles) {
         $('.project').css('display','none');
+        $('.noproject').css('display','block');
         var toggles = QueryString.toggles.split("+");
         $('#project-toggles').find('a').removeClass('active');
         for (var i=0; i<toggles.length; i++) {
