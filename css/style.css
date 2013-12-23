@@ -299,7 +299,7 @@ body {
 }
 .active .gallery {
   opacity: 1;
-  background-color: rgba(120, 120, 120, 0.4);
+  background-color: rgba(120, 120, 120, 0.5);
 }
 .active .gallery iframe {
   display: block;

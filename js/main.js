@@ -15,12 +15,13 @@ $(document).ready(function() {
         }
         var actives = $('#project-toggles .active');
         var hiddens = $('#project-toggles a:not(.active)');
-        actives.each(function(){
-            $('.'+$(this).attr('id')).fadeIn(300);
-        });
         hiddens.each(function(){
             $('.'+$(this).attr('id')).fadeOut(300);
         });
+        actives.each(function(){
+            $('.'+$(this).attr('id')).fadeIn(300);
+        });
+
         /*for (var i=0; i< actives.length; i++) {
             var showElem = '.'+$(actives[i]).attr('id');
             //pckry.unignore(container.querySelector(showElem));
