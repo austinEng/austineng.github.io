@@ -1,20 +1,8 @@
 $(document).ready(function() {
     var toggleClickCount=0;
 
-    $('#project-toggles a').click(function(){
-        toggleClickCount++;
+    function manageToggles() {
         var toggles = $('#project-toggles a');
-        $(this).toggleClass('active');
-        if ($(this).attr('id')=='all') {
-            if ($(this).hasClass('active')) {
-                toggles.addClass('active');
-            } else {
-                toggles.removeClass('active');
-            }
-        }
-        if ((!$(this).hasClass('active'))) {
-            $('#all').removeClass('active');
-        }
         var all = true;
         for (var i=1; i<toggles.length; i++) {
             if(!($(toggles[i]).hasClass('active'))) {
@@ -46,6 +34,32 @@ $(document).ready(function() {
                 });
             });
         }
+        return actives;
+    }
+
+    $('#project-toggles a').click(function(){
+        toggleClickCount++;
+        var toggles = $('#project-toggles a');
+        $(this).toggleClass('active');
+        if ($(this).attr('id')=='all') {
+            if ($(this).hasClass('active')) {
+                toggles.addClass('active');
+            } else {
+                toggles.removeClass('active');
+            }
+        }
+        if ((!$(this).hasClass('active'))) {
+            $('#all').removeClass('active');
+        }
+        var all = true;
+        for (var i=1; i<toggles.length; i++) {
+            if(!($(toggles[i]).hasClass('active'))) {
+                all = false;
+                break;
+            }
+        }
+        var actives = manageToggles();
+
         if (actives.length==0) {
             $('.noproject').delay(400).fadeIn(300);
         }else {
@@ -75,7 +89,38 @@ $(document).ready(function() {
                 $(this).fadeOut(300)
             }
         });*/
+        var t = $('#project-toggles a.active');
+        var ts=[];
+        for (var i=0; i<t.length; i++) {
+            ts[i]=$(t[i]).attr('id');
+        }
+        var ts= ts.join('+');
+        setGetParameter('toggles', ts)
+
     });
+
+    function setGetParameter(paramName, paramValue)
+    {
+        var url = window.location.href;
+        if (url.indexOf(paramName + "=") >= 0)
+        {
+            var prefix = url.substring(0, url.indexOf(paramName));
+            var suffix = url.substring(url.indexOf(paramName)).substring(url.indexOf("=") + 1);
+            suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
+            url = prefix + paramName + "=" + paramValue + suffix;
+        }
+        else
+        {
+            if (url.indexOf("?") < 0)
+                url += "?" + paramName + "=" + paramValue;
+            else
+                url += "&" + paramName + "=" + paramValue;
+        }
+        var stateObj = { foo: "bar" };
+        history.pushState(stateObj, url, url);
+        //window.location.href = url;
+    }
+
     $('#project-outer-container').click(function(e){
         var projects = $('.project');
         projects.removeClass('active', 300, function() {
@@ -181,6 +226,20 @@ $(document).ready(function() {
     });
     pckry.layout();
 
+    if (QueryString.toggles) {
+        $('.project').css('display','none');
+        var toggles = QueryString.toggles.split("+");
+        $('#project-toggles').find('a').removeClass('active');
+        for (var i=0; i<toggles.length; i++) {
+            $('#'+toggles[i]).addClass('active');
+            if (toggles[i]=="all") {
+                $('#project-toggles').find('a').addClass('active');
+            }
+        }
+        manageToggles();
+        pckry.layout();
+    }
+
     /*$('.desc-bg').each(function(){
         $(this).css('backgroundImage','url("'+$(this).parent().parent().css('backgroundImage').slice(4,-5)+'_blur.jpg")');
     });*/
@@ -240,6 +299,28 @@ function reloadIframe(frame) {
         frame.attr('src', frame.attr('src'))
     }, 200);
 }
+var QueryString = function () {
+    // This function is anonymous, is executed immediately and
+    // the return value is assigned to QueryString!
+    var query_string = {};
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        // If first entry with this name
+        if (typeof query_string[pair[0]] === "undefined") {
+            query_string[pair[0]] = pair[1];
+            // If second entry with this name
+        } else if (typeof query_string[pair[0]] === "string") {
+            var arr = [ query_string[pair[0]], pair[1] ];
+            query_string[pair[0]] = arr;
+            // If third or later entry with this name
+        } else {
+            query_string[pair[0]].push(pair[1]);
+        }
+    }
+    return query_string;
+} ();
 
 $(window).load(function(){
 
