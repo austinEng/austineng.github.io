@@ -39,6 +39,11 @@ $(document).ready(function() {
                 $(this).fadeOut(300, function(){pckry.layout()});
             });
         }
+        if (actives.length==0) {
+            $('.noproject').delay(400).fadeIn(300);
+        }else {
+            $('.noproject').fadeOut(100);
+        }
         //pckry.layout();
         /*$('.project').each(function(){
             var hide = true;
