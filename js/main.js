@@ -2,7 +2,7 @@ $(document).ready(function() {
     var toggleClickCount=0;
 
     function manageToggles() {
-        var toggles = $('#project-toggles a');
+        var toggles = $('#floater a');
         var all = true;
         for (var i=1; i<toggles.length; i++) {
             if(!($(toggles[i]).hasClass('active'))) {
@@ -13,8 +13,8 @@ $(document).ready(function() {
         if (all==true) {
             $('#all').addClass('active');
         }
-        var actives = $('#project-toggles .active');
-        var hiddens = $('#project-toggles a:not(.active)');
+        var actives = $('#floater .active');
+        var hiddens = $('#floater a:not(.active)');
         hiddens.each(function(){
             $('.'+$(this).attr('id')).fadeOut(300);
         });
@@ -57,9 +57,9 @@ $(document).ready(function() {
         return actives;
     }
 
-    $('#project-toggles a').click(function(){
+    $('#floater a').click(function(){
         toggleClickCount++;
-        var toggles = $('#project-toggles a');
+        var toggles = $('#floater a');
         $(this).toggleClass('active');
         if ($(this).attr('id')=='all') {
             if ($(this).hasClass('active')) {
@@ -109,7 +109,7 @@ $(document).ready(function() {
                 $(this).fadeOut(300)
             }
         });*/
-        var t = $('#project-toggles a.active');
+        var t = $('#floater a.active');
         var ts=[];
         for (var i=0; i<t.length; i++) {
             ts[i]=$(t[i]).attr('id');
@@ -253,7 +253,7 @@ $(document).ready(function() {
     pckry=$('#project-wrapper');
     pckry.isotope({
         itemSelector: '.project',
-        masonry: { columnWidth: pckry.width() / 3},
+        masonry: { columnWidth: pckry.width() / 3}
         //transformsEnabled: false
 
     });
@@ -271,11 +271,11 @@ $(document).ready(function() {
         visibles="";
         $('.noproject').css('display','block');
         var toggles = QueryString.toggles.split("+");
-        $('#project-toggles').find('a').removeClass('active');
+        $('#floater').find('a').removeClass('active');
         for (var i=0; i<toggles.length; i++) {
             $('#'+toggles[i]).addClass('active');
             if (toggles[i]=="all") {
-                $('#project-toggles').find('a').addClass('active');
+                $('#floater').find('a').addClass('active');
             }
         }
         manageToggles();
@@ -325,11 +325,21 @@ $(document).ready(function() {
         $(visibles).css('opacity',1);
     },100);
 
-    $('.film').hover(function(){
-        //$('.film').addClass('project-hover');
-    }, function(){
-        //$('.film').removeClass('project-hover');
+    function placeFloater() {
+        var dist=$('#project-toggles').offset().top-$(document).scrollTop()-31;
+        if (dist < 0) {
+            dist=0;
+            $('#floater').css('border-bottom', '1px solid #1B1B1B');
+        } else {
+            $('#floater').css('border-bottom', '');
+        }
+        $('#floater').css('top', dist);
+    }
+
+    $(document).scroll(function(){
+        placeFloater();
     });
+    placeFloater();
 });
 
 function manageGalBtns(gal) {

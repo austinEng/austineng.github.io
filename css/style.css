@@ -29,7 +29,8 @@ body {
 .noproject,
 .description > div,
 .description > a,
-#contact-container {
+#contact-container,
+#floater {
   text-transform: lowercase;
   font-family: 'Quicksand', sans-serif;
 }
@@ -47,7 +48,7 @@ body {
   font-size: 80px;
 }
 #greeting-container {
-  margin-top: 80px;
+  margin-top: 40px;
   padding-bottom: 20px;
 }
 #greeting {
@@ -70,28 +71,42 @@ body {
   border-top: 1px solid #1B1B1B;
   border-bottom: 1px solid #1B1B1B;
 }
+#floater {
+  position: fixed;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-top: 1px solid #1b1b1b;
+  background-color: #0F0F0F;
+  z-index: 20;
+}
 #project-toggles {
   margin-bottom: 0px;
 }
-#project-toggles ul {
+#project-toggles ul,
+#floater ul {
   padding-left: 0px;
   text-align: center;
 }
-#project-toggles li {
+#project-toggles li,
+#floater li {
   display: inline-block;
   padding-left: 15px;
   padding-right: 15px;
   font-size: 20px;
 }
-#project-toggles a {
+#project-toggles a,
+#floater a {
   color: #808080;
   letter-spacing: 1px;
 }
-#project-toggles a:hover {
+#project-toggles a:hover,
+#floater a:hover {
   text-decoration: none;
   cursor: pointer;
 }
-#project-toggles .active {
+#project-toggles .active,
+#floater .active {
   color: #43b117;
   text-shadow: 0.5px 0px 0px #43b117;
 }
