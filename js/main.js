@@ -200,21 +200,15 @@ $(document).ready(function() {
             $(this).toggleClass('active', 300, function(){
                 pckry.isotope({filter: visibles});
                 var item = $(this);
-                var counter=0;
-                var toScroll = $('body,html');
                 setTimeout(function(){
-                    var goto = setInterval(function(){
-                        toScroll.clearQueue();
-                        toScroll.animate({
-                            scrollTop: item.offset().top-150
-                        }, 300);
-                        counter++;
-                        console.log(counter);
-                        if (counter>1) {
-                            clearInterval(goto);
-                        }
-                    },300);
-                },0);
+                    $('body,html').animate({
+                        scrollTop: item.offset().top-100
+                    }, 400, function() {
+                        $('body,html').animate({
+                            scrollTop: item.offset().top-100
+                        }, 200);
+                    });
+                },300);
 
             });
         } else {
