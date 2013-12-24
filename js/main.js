@@ -191,16 +191,31 @@ $(document).ready(function() {
             descBg.animate({width: width},300);
 
             manageGalBtns($(this).find('.gallery'));
-            //reloadIframe($(this).find('iframe'));
+
+            var vid = $(this).find('.video');
+            if (!(vid.attr('src'))) {
+                vid.attr('src',vid.attr('data-src'));
+            }
 
             $(this).toggleClass('active', 300, function(){
                 pckry.isotope({filter: visibles});
                 var item = $(this);
+                var counter=0;
+                var toScroll = $('body,html');
                 setTimeout(function(){
-                    $('body,html').animate({
-                        scrollTop: item.offset().top-100
-                    }, 400);
-                },300);
+                    var goto = setInterval(function(){
+                        toScroll.clearQueue();
+                        toScroll.animate({
+                            scrollTop: item.offset().top-150
+                        }, 300);
+                        counter++;
+                        console.log(counter);
+                        if (counter>1) {
+                            clearInterval(goto);
+                        }
+                    },300);
+                },0);
+
             });
         } else {
             $(this).removeClass('active');
