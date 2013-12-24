@@ -360,6 +360,39 @@ iframe.website {
   height: 128%;
   width: 126.6666%;
 }
+@media (max-width: 767px) {
+  .item2 .project-content .description {
+    width: 90%;
+    right: 90%;
+  }
+  .item2 .project-content:hover .desc-bg-container {
+    width: 90%;
+    margin-right: 10%;
+  }
+  .active-desc {
+    width: 100%!important;
+    right: 0%!important;
+    overflow-y: auto!important;
+    height: 40%!important;
+  }
+  .active-desc-bg-container {
+    width: 100%!important;
+    margin-right: 0%!important;
+    height: 100%;
+    top: 10px;
+    padding-bottom: 20px;
+    position: absolute;
+  }
+  .active .gallery {
+    width: 100%;
+    height: 60%;
+    top: 0px;
+    left: 0px;
+  }
+  .active.project {
+    height: 800px;
+  }
+}
 .galPic {
   display: none;
   position: relative;
