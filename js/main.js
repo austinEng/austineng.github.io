@@ -326,12 +326,13 @@ $(document).ready(function() {
     },100);
 
     function placeFloater() {
-        var dist=$('#project-toggles').offset().top-$(document).scrollTop()-31;
-        if (dist < 0) {
+        var dist2=$('#project-toggles').offset().top-$(document).scrollTop()-31;
+        var dist=$('#project-toggles').offset().top-31;
+        if (dist2 < 0) {
             dist=0;
-            $('#floater').css('border-bottom', '1px solid #1B1B1B');
+            $('#floater').css('position','fixed');
         } else {
-            $('#floater').css('border-bottom', '');
+            $('#floater').css('position','');
         }
         $('#floater').css('top', dist);
     }
