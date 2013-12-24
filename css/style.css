@@ -177,10 +177,10 @@ body {
   left: 0px;
   content: ''*/
 }
-.painting {
+/*.painting {
   z-index: 0!important;
 }
-.photography {
+.photography{
   z-index: 1!important;
 }
 .web {
@@ -191,7 +191,7 @@ body {
 }
 .film {
   z-index: 4!important;
-}
+}*/
 .noproject {
   height: auto;
   padding: 20px;
