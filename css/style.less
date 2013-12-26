@@ -639,6 +639,22 @@ iframe.website {
   -o-transition-property:      -o-transform, opacity;
   transition-property:         transform, opacity;
 }
+@-moz-document url-prefix() {
+  .isotope .isotope-item {
+    -webkit-transition-property: top, left, opacity;
+    -moz-transition-property:    top, left, opacity;
+    -ms-transition-property:     top, left, opacity;
+    -o-transition-property:      top, left, opacity;
+    transition-property:         top, left, opacity;
+  }
+}
+/*.isotope .isotope-item {
+  -webkit-transition-property: top, left, opacity;
+  -moz-transition-property:    top, left, opacity;
+  -ms-transition-property:     top, left, opacity;
+  -o-transition-property:      top, left, opacity;
+  transition-property:         top, left, opacity;
+}*/
 
 /**** disabling Isotope CSS3 transitions ****/
 
