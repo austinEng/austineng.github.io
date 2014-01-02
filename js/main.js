@@ -415,5 +415,23 @@ var QueryString = function () {
 } ();
 
 $(window).load(function(){
+    var ie = (function(){
 
+        var undef,
+            v = 3,
+            div = document.createElement('div'),
+            all = div.getElementsByTagName('i');
+
+        while (
+            div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+                all[0]
+            );
+
+        return v > 4 ? v : undef;
+
+    }());
+
+    if (ie<-8){
+        alert('Sorry, your browser is not currently supported. Please update to a newer version of Internet Explorer or use Chrome, Firefox, or Safari.\n\nIf you continue, this page may not display properly.');
+    }
 });
