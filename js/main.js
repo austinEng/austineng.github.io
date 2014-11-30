@@ -60,13 +60,16 @@ $(document).ready(function() {
     $('#floater a').click(function(){
         toggleClickCount++;
         var toggles = $('#floater a');
-        $(this).toggleClass('active');
+        toggles.removeClass('active');
+        $(this).addClass('active');
+        //$(this).toggleClass('active');
         if ($(this).attr('id')=='all') {
-            if ($(this).hasClass('active')) {
-                toggles.addClass('active');
-            } else {
-                toggles.removeClass('active');
-            }
+            toggles.addClass('active');
+            //if ($(this).hasClass('active')) {
+            //    toggles.addClass('active');
+            //} else {
+            //    toggles.removeClass('active');
+            //}
         }
         if ((!$(this).hasClass('active'))) {
             $('#all').removeClass('active');
@@ -109,7 +112,7 @@ $(document).ready(function() {
                 $(this).fadeOut(300)
             }
         });*/
-        var t = $('#floater a.active');
+        /*var t = $('#floater a.active');
         var ts=[];
         for (var i=0; i<t.length; i++) {
             ts[i]=$(t[i]).attr('id');
@@ -117,8 +120,9 @@ $(document).ready(function() {
         var ts= ts.join('+');
         if (ts=="") {
             ts="none"
-        }
-        setGetParameter('toggles', ts)
+        }*/
+        var t = $($('#floater a.active')[0]).attr('id');
+        setGetParameter('q', t);
 
     });
 
@@ -285,7 +289,7 @@ $(document).ready(function() {
         });
     });
 
-    if (QueryString.toggles) {
+    /*if (QueryString.toggles) {
         $('.project').css('display','none');
         visibles="";
         $('.noproject').css('display','block');
@@ -296,6 +300,20 @@ $(document).ready(function() {
             if (toggles[i]=="all") {
                 $('#floater').find('a').addClass('active');
             }
+        }
+        manageToggles();
+        pckry.isotope('reLayout');
+    }*/
+
+    if (QueryString.q) {
+         $('.project').css('display','none');
+        visibles="";
+        $('.noproject').css('display','block');
+        var toggle = QueryString.q;
+        $('#floater').find('a').removeClass('active');
+        $("#"+toggle).addClass('active');
+        if (toggle=="all") {
+            $('#floater').find('a').addClass('active');
         }
         manageToggles();
         pckry.isotope('reLayout');

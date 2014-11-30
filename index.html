@@ -7,7 +7,7 @@
     <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -28,8 +28,8 @@
     <div class="row" id="greeting">
         <div class="col-lg-12">
             <span id="hello"><span class="firstname">Austin</span> <span class="lastname">Eng</span></span>
-            <br>
-            <span>&#8212 Digital Media Porfolio</span>
+            <!--<br>
+            <span>&#8212 Digital Media Porfolio</span>-->
         </div>
     </div>
 </div>
@@ -38,17 +38,46 @@
         <div class="row" id="project-toggles">
             <ul>
                 <li><a class="active" id="all_">All</a></li>
+                <li><a class="active" id="professional_">Professional</a></li>
+                <li><a class="active" id="code_">Code</a></li>
                 <li><a class="active" id="animation_">Animation/VFX</a></li>
                 <li><a class="active" id="film_">Film</a></li>
                 <li><a class="active" id="web_">Web Design</a></li>
+                <!--
                 <li><a class="active" id="photography_">Photography</a></li>
                 <li><a class="active" id="painting_">Painting</a></li>
+                -->
             </ul>
         </div>
         <div class="row" id="project-wrapper">
+            <!--
             <div class="project noproject col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
                 <div class="up-arrow"></div>
                 <div>Click the toggles above to turn categories on and off</div>
+            </div>
+            -->
+            <div class="project clickable item2 col-lg-8 col-sm-8- col-xs-12 professional">
+                <div class="project-content" style="background-image: url('projects/professional/artsicle.jpg')">
+                    <div class="description">
+                        <div>Professional</div><br/>
+                        <a href="http://www.artsicle.com">artsicle.com</a>
+                        <br /><br />
+                        Worked as a full-stack Ruby on Rails software engineering intern at Artsicle. <br/>
+                        <ul>
+                        <li>Developed new features to assist artists in promoting and selling their work</li>
+                        <li>Improved and added functionality to admin panel interfaces</li>
+                        <li>Improved caching efficiency with modifications and improvements to the Cashier gem</li>
+                        <li>Rewrote portions of the test suit to minimize external API calls for speed improvements</li>
+                        <li>Fixed various bugs in MVC logic</li>
+                        </ul>
+                    </div>
+                    <div class="desc-bg-container"><div class="desc-bg" style="background-image: url('projects/professional/artsicle_blur.jpg');"></div></div>
+                    <div class="gallery">
+                        <div class="galPic" style="background-image: url('projects/professional/artsicle.jpg')"></div>
+                        <div class="left-button gal-btn"></div>
+                        <div class="right-button gal-btn"></div>
+                    </div>
+                </div>
             </div>
             <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 animation">
                 <div class="project-content"  style="background-image: url('projects/video/shatter.jpg');">
@@ -74,7 +103,7 @@
                     <div class="gallery"><iframe class="video" data-src="//www.youtube.com/embed/NJ-dqUoVzbY?rel=0" frameborder="0" allowfullscreen></iframe></div>
                 </div>
             </div>
-            <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 animation">
+            <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 animation professional">
                 <div class="project-content"  style="background-image: url('projects/video/SI.jpg');">
                     <div class="description">
                         <div>vfx</div><br />
@@ -84,6 +113,29 @@
                     </div>
                     <div class="desc-bg-container"><div class="desc-bg" style="background-image: url('projects/video/SI_blur.jpg')"></div></div>
                     <div class="gallery"><iframe class="video" data-src="//www.youtube.com/embed/IBm8ktlMb5k?rel=0" frameborder="0" allowfullscreen></iframe></div>
+                </div>
+            </div>
+            <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 web code">
+                <div class="project-content"  style="background-image: url('projects/code/dogecache/dogecache.jpg');">
+                    <div class="description">
+                        <div>Code</div><br />
+                        <a href="http://www.dogecache.com/">dogecache.com/</a><br />
+                        <a href="https://github.com/Dogecache/Dogecache">github</a>
+                        <br /><br />
+                        Dogecache is an innovative app built upon the principles of geocaching: an outdoor recreational activity where participants use GPS and other navigational techniques to find containers containing small prizes left by other adventurers. There is only one rule: you must leave something of equal or greater value to what you take.
+                        <br /><br />
+                        Dogecache puts an exciting spin on this recreational activity by embracing dogecoin, a cryptocurrency. Rather than hunt for physical caches, the user hunts for virtual dogecaches that other explorers have left behind. The app is entirely location dependent, as you find dogecoins near you by dropping some in your current location. That is, the more dogecoins you drop, the larger your search radius is and the more likely you are to find other deposits. The tradeoff lies in the fact that you can only pick up other users' dogecoins, and dogecoins you drop can only be picked up by other people. This helps encourage people to share their wealth.
+                    </div>
+                    <div class="desc-bg-container"><div class="desc-bg" style="background-image: url('projects/code/dogecache/dogecache_blur.jpg')"></div></div>
+                    <div class="gallery">
+                        <div class="galPic" style="background-image: url('projects/code/dogecache/1.jpg')"></div>
+                        <div class="galPic" style="background-image: url('projects/code/dogecache/2.jpg')"></div>
+                        <div class="galPic" style="background-image: url('projects/code/dogecache/3.jpg')"></div>
+                        <div class="galPic" style="background-image: url('projects/code/dogecache/4.jpg')"></div>
+                        <div class="galPic" style="background-image: url('projects/code/dogecache/5.jpg')"></div>
+                        <div class="left-button gal-btn"></div>
+                        <div class="right-button gal-btn"></div>
+                    </div>
                 </div>
             </div>
             <div class="project clickable item2 col-lg-8 col-sm-8 col-xs-12 animation">
@@ -134,6 +186,7 @@
                     <div class="gallery"><iframe class="video" data-src="//www.youtube.com/embed/jitxqJj-oe4?rel=0" frameborder="0" allowfullscreen></iframe></div>
                 </div>
             </div>
+            <!--
             <div class="project clickable item2 col-lg-8 col-sm-8 col-xs-12 photography" id="fall">
                 <div class="project-content" style="background-image: url('projects/photography/fall/IMG_8535_DxO.jpg');">
                     <div class="description">
@@ -196,6 +249,7 @@
                     </div>
                 </div>
             </div>
+            -->
             <div class="project clickable item2 col-lg-8 col-sm-8 col-xs-12 web" id="prebith">
                 <div class="project-content"  style="background-image: url('projects/web/prebirth/prebirth.jpg');">
                     <div class="description">
@@ -218,6 +272,7 @@
                     </div>
                 </div>
             </div>
+            <!--
             <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 animation">
                 <div class="project-content"  style="background-image: url('projects/video/freeze.jpg');">
                     <div class="description">
@@ -228,6 +283,7 @@
                     <div class="gallery"><iframe class="video" data-src="//www.youtube.com/embed/3KSTsC1ILrU?rel=0" frameborder="0" allowfullscreen></iframe></div>
                 </div>
             </div>
+            -->
             <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 animation">
                 <div class="project-content"  style="background-image: url('projects/video/orb.jpg');">
                     <div class="description">
@@ -263,10 +319,10 @@
                 </div>
             </div>
 
-            <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 web">
+            <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 web code">
                 <div class="project-content"  style="background-image: url('projects/web/cityscenes/cityscenes.jpg');">
                     <div class="description">
-                        <div>Web Design</div><br />
+                        <div>Code</div><br />
                         <a href="http://cityscenes.tk/">cityscenes.tk/</a>
                         <br /><br />
                         A website application designed for the Young Rewired State Hackathon in New York, winning Best in Show
@@ -276,6 +332,41 @@
                     <div class="desc-bg-container"><div class="desc-bg" style="background-image: url('projects/web/cityscenes/cityscenes_blur.jpg')"></div></div>
                     <div class="gallery">
                         <div class="galPic" style="background-image: url('projects/web/cityscenes/cityscenes.jpg')"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project clickable item2 col-lg-8 col-sm-8- col-xs-12 professional">
+                <div class="project-content" style="background-image: url('projects/professional/counterhack.jpg')">
+                    <div class="description">
+                        <div>Professional</div><br/>
+                        Worked as a summer intern at CounterHack, a cybersecurity organization<br/>
+                        <ul>
+                        <li>Set up and tested systems for Capture-The-Flag hacking challenges</li>
+                        <li>Tested functionality of Metasploit exploits</li>
+                        <li>Worked on a new airport mission for the Cybercity challenge</li>
+                        </ul>
+                    </div>
+                    <div class="desc-bg-container"><div class="desc-bg" style="background-image: url('projects/professional/counterhack_blur.jpg');"></div></div>
+                    <div class="gallery">
+                        <div class="galPic" style="background-image: url('projects/professional/counterhack.jpg')"></div>
+                        <div class="left-button gal-btn"></div>
+                        <div class="right-button gal-btn"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 web code">
+                <div class="project-content"  style="background-image: url('projects/code/peacecorps.jpg');">
+                    <div class="description">
+                        <div>Code</div><br />
+                        <a href="https://github.com/PeaceCorps/OSM-Dashboard">PeaceCorps Dashboard</a>
+                        <br /><br />
+                        Developed a web application to assist the PeaceCorp in keeping track of their contributions to OpenStreetMap. Built in Node.JS, the application queries the OSM API in realtime to display the contributions on a map.
+                    </div>
+                    <div class="desc-bg-container"><div class="desc-bg" style="background-image: url('projects/code/peacecorps_blur.jpg')"></div></div>
+                    <div class="gallery">
+                        <div class="galPic" style="background-image: url('projects/code/peacecorps.jpg')"></div>
+                        <div class="left-button gal-btn"></div>
+                        <div class="right-button gal-btn"></div>
                     </div>
                 </div>
             </div>
@@ -302,6 +393,7 @@
                     </div>
                 </div>
             </div>
+            <!--
             <div class="project clickable item1 col-lg-4 col-sm-4 col-xs-12 photography" id="ny">
                 <div class="project-content" style="background-image: url('projects/photography/ny/IMG_8892_DxO.jpg');">
                     <div class="description">
@@ -359,6 +451,7 @@
 
                 </div>
             </div>
+            -->
         </div>
     </div>
 </div>
@@ -419,11 +512,15 @@
 <div id="floater">
     <ul>
         <li><a class="active" id="all">All</a></li>
+        <li><a class="active" id="professional">Professional</a></li>
+        <li><a class="active" id="code">Code</a></li>
         <li><a class="active" id="animation">Animation/VFX</a></li>
         <li><a class="active" id="film">Film</a></li>
         <li><a class="active" id="web">Web Design</a></li>
+        <!--
         <li><a class="active" id="photography">Photography</a></li>
         <li><a class="active" id="painting">Painting</a></li>
+        -->
     </ul>
 </div>
 
