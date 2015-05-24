@@ -161,6 +161,7 @@ $(document).ready(function() {
             $(descBgs[i]).css('transition','').css('marginRight','').css('width','').removeClass('active-desc-bg-container');
         }
     })
+    /*
     $('.project.clickable').click(function(event){
         event.stopPropagation();
         var projects = $('.project');
@@ -254,6 +255,10 @@ $(document).ready(function() {
             $(this).find('.description').removeClass('active-desc', 300);
             $(this).find('.desc-bg-container').removeClass('active-desc-bg-container', 300);
         }
+    });
+    */
+    $('.project.clickable').click(function(event){
+        window.location = $(this).attr('data-link');
     });
     /*$.Isotope.prototype._positionAbs = function( x, y ) {
         return { right: x, top: y };

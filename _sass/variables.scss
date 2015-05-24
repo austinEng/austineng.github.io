@@ -1,0 +1,20 @@
+$main-color: #52b74f;
+$main-light-color: #87cf6b;
+$main-dark-color: #43b117;
+$secondary-oolor: #2778c3;
+$secondary-light-oolor: #5f8dc3;
+$null-color: gray;
+$overlay-color: rgba(20, 20, 20, 0.5);
+
+@font-face {
+  font-family: NewNeue;
+  src: url("../font/HelveticaNeueLight.ttf");
+}
+@font-face {
+  font-family: FontAwesome;
+  src: url("../font/fontawesome-webfont.ttf");
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../font/fontawesome-webfont.eot?') format('eot'), url('../font/fontawesome-webfont.woff') format('woff'), url('../font/fontawesome-webfont.ttf') format('truetype');
+}

@@ -1,0 +1,14 @@
+name: Austin Eng
+
+baseurl: ""
+
+permalink: /:categories/:title
+
+markdown: redcarpet
+highlighter: pygments
+
+sass:
+  style: :compressed
+
+gems:
+  - jekyll-sitemap
