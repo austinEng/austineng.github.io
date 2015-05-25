@@ -1,0 +1,51 @@
+---
+layout: default
+custom_css: resume
+keywords: [resume, austin eng, digital media design, computer graphics, computer science, animation, programming, engineering]
+---
+
+<div id="project-outer-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <section>
+          <h1 class="section-title">Work Experience</h1>
+          {% for entry in page.work %}
+            <div class="entry">
+              <h2><b>{{ entry.title }}</b>{% if entry.date %}<span class="date"> &#183; {{ entry.date }}</span>{% endif %}</h2>
+              {% if entry.excerpt %}<p class="excerpt">{{ entry.excerpt }}</p>{% endif %}
+              <div class="content">{{ entry.content }}</div>
+            </div>
+          {% endfor %}
+        </section>
+        <section>
+          <h1 class="section-title">Education</h1>
+          {% for entry in page.education %}
+            <div class="entry">
+              <h2><b>{{ entry.title }}</b>{% if entry.date %}<span class="date"> &#183; {{ entry.date }}</span>{% endif %}</h2>
+              {% if entry.excerpt %}<p class="excerpt">{{ entry.excerpt }}</p>{% endif %}
+              <div class="content">{{ entry.content }}</div>
+            </div>
+          {% endfor %}
+        </section>
+      </div>
+      <div class="col-sm-6">
+        <section>
+          <h1 class="section-title">Projects</h1>
+          {% for entry in page.projects %}
+            <div class="entry">
+              <h2><b>{{ entry.title }}</b>{% if entry.date %}<span class="date"> &#183; {{ entry.date }}</span>{% endif %}</h2>
+              {% if entry.excerpt %}<p class="excerpt">{{ entry.excerpt }}</p>{% endif %}
+              <div class="content">{{ entry.content }}</div>
+            </div>
+          {% endfor %}
+        </section>
+        <section>
+          <h1 class="section-title">Skills</h1>
+          <p><span class="excerpt">Experience:</span> Python, Ruby on Rails, Java, Javascript, HTML, CSS, UNIX, C++, MySQL, MongoDB, Node.js</p>
+          <p><span class="excerpt">Learning:</span> OCaml, C</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

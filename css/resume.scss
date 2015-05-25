@@ -1,0 +1,44 @@
+---
+---
+
+@import "variables";
+
+.section-title {
+  color: $main-dark-color;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+.excerpt {
+  color: $main-light-color;
+  font-size: 20px;
+  margin: 0;
+}
+
+p {
+  font-size: 18px;
+  margin: 0;
+  & + p {
+    margin-top: 10px;
+  }
+}
+
+.entry {
+  & + .entry {
+    margin-top: 20px;
+  }
+}
+
+.date {
+  color: $null-color;
+}
+
+section {
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 5px 0 black;
+}

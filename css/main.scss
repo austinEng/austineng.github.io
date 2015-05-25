@@ -29,6 +29,19 @@ a {
   }
 }
 
+.list {
+  li {
+    position: relative;
+    list-style-type: none;
+    font-size: 18px;
+    &:before {
+      content: "\2013";
+      position: absolute;
+      left: -15px;
+    }
+  }
+}
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: 'Quicksand', sans-serif;
   margin: 0;
