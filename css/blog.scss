@@ -6,6 +6,9 @@
   color: $main-dark-color;
   margin-top: 20px;
   margin-bottom: 10px;
+  a {
+    color: inherit;
+  }
 }
 
 p {
