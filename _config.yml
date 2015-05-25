@@ -1,8 +1,26 @@
 name: Austin Eng
+description: Student in Digital Media Design
 
 baseurl: ""
 
 permalink: /:categories/:title
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: project
+      is_blog: ["false"]
+  -
+    scope:
+      path: "blog"
+      type: posts
+    values:
+      layout: blogpost
+      is_blog: ["true"]
+      author: Austin Eng
 
 markdown: redcarpet
 highlighter: pygments

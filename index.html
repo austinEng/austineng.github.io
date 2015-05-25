@@ -25,17 +25,18 @@ custom_js: [ 'packery.pkgd.min', 'jquery.isotope.min', 'main' ]
             </div>
             -->
             {% for project in site.posts %}
-            <div data-link="{{ project.url }} " class="project clickable {{ project.tile_size }} {{ project.column_size }} {{ project.classes }}">
-                <div class="project-content" style="background-image: url(images/{{ project.bg_image }})">
-
-                    <div class="description">
-                        <h2>{{ project.title | capitalize }}</h2><br/>
-                        <p>{{ project.summary }}</p>
+                {% if project.is_blog contains "false" %}
+                    <div data-link="{{ project.url }} " class="project clickable {{ project.tile_size }} {{ project.column_size }} {{ project.classes }}">
+                        <div class="project-content" style="background-image: url(images/{{ project.bg_image }})">
+                            <div class="description">
+                                <h2>{{ project.title | capitalize }}</h2><br/>
+                                <p>{{ project.summary }}</p>
+                            </div>
+                            <div class="desc-bg-container"><div class="desc-bg" style="background-image: url(images/{{ project.bg_blur_image }});"></div></div>
+                            <a class="project-link" href="{{ project.url }}"></a>
+                        </div>
                     </div>
-                    <div class="desc-bg-container"><div class="desc-bg" style="background-image: url(images/{{ project.bg_blur_image }});"></div></div>
-                    <a class="project-link" href="{{ project.url }}"></a>
-                </div>
-            </div>
+                {% endif %}
             {% endfor %}
 
         </div>
