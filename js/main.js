@@ -367,19 +367,10 @@ $(document).ready(function() {
         $(visibles).css('opacity',1);
     },100);
 
-    function placeFloater() {
-        var dist2=$('#project-toggles').offset().top-$(document).scrollTop()-31;
-        var dist=$('#project-toggles').offset().top-31;
-        if (dist2 < 0) {
-            dist=0;
-            $('#floater').css('position','fixed');
-        } else {
-            $('#floater').css('position','');
-        }
-        $('#floater').css('top', dist);
-    }
-
     $(document).scroll(function(){
+        placeFloater();
+    });
+    $(window).resize(function() {
         placeFloater();
     });
     placeFloater();
@@ -395,6 +386,17 @@ $(document).ready(function() {
             .css('transition-property', 'transform');
     }*/
 });
+function placeFloater() {
+    var dist2=$('#project-toggles').offset().top-$(document).scrollTop()-31;
+    var dist=$('#project-toggles').offset().top-31;
+    if (dist2 < 0) {
+        dist=0;
+        $('#floater').css('position','fixed');
+    } else {
+        $('#floater').css('position','');
+    }
+    $('#floater').css('top', dist);
+}
 
 function manageGalBtns(gal) {
     var pic = $(gal.find('.galPic:visible')[0]);
@@ -438,6 +440,7 @@ var QueryString = function () {
 } ();
 
 $(window).load(function(){
+    placeFloater();
     var ie = (function(){
 
         var undef,
