@@ -25,7 +25,7 @@ summary: Worked as a full-stack Ruby on Rails software engineering intern at <a 
 </div>
 
 <h3>Cashier Caching Improvements</h3>
-<p>The <a href="//github.com/ahawkins/cashier">cashier</a> gem allows for easily manipulation and access to cache using tags instead of keys. Caches can easily be tagged, grouped, and expired. With Artsicle, tags were being stored with inconsisent letter case, making cache operations more inefficient.</p>
+<p>The <a href="//github.com/ahawkins/cashier">cashier</a> gem allows for easy manipulation and access to cache using tags instead of keys. Caches can easily be tagged, grouped, and expired. With Artsicle, tags were being stored with inconsisent letter case, making cache operations more inefficient.</p>
 
 <p>I worked on implenting a <a href="//github.com/austinEng/cashier/commit/cbb23a8e5795eba8464d5820532c7711f6252fed">modification</a> to the gem which would downcase all incoming tags. As caches were expired and recreated, the cache would gradually reach a point where all tags were lowercase, increasing cache efficiency. This was preferred over creating a task to downcase the entire cache at once as such an approach would invalidate all existing caches.</p>
 
