@@ -12,7 +12,7 @@ summary: A collection of films which I've worked on.
 ---
 
 <h3>Prebirth: The Eternal War</h3>
-<p>Prebirth is a short film I worked on over the summer for which I served as First Assistant Cinematographer. I also was responsible for designing and building many of the camera rigs which we used on set and designed the promitional <a href="/prebirthmovie.com">website</a> for the film. Prebirth was accepted into the Garden State Film Festival.</p>
+<p>Prebirth is a short film I worked on over the summer for which I served as First Assistant Cinematographer. I also was responsible for designing and building many of the camera rigs which we used on set and designed the promotional <a href="//prebirthmovie.com">website</a> for the film. Prebirth was accepted into the Garden State Film Festival.</p>
 
 <div class="row">
   <div class="col-lg-4 col-sm-6 col-xs-12">
