@@ -11,19 +11,9 @@ custom_js: [ 'packery.pkgd.min', 'jquery.isotope.min', 'main' ]
                 <li><a class="active" id="professional_">Professional</a></li>
                 <li><a class="active" id="code_">Code</a></li>
                 <li><a class="active" id="film-and-animation_">Film and Animation</a></li>
-                <!--
-                <li><a class="active" id="photography_">Photography</a></li>
-                <li><a class="active" id="painting_">Painting</a></li>
-                -->
             </ul>
         </div>
         <div class="row" id="project-wrapper">
-            <!--
-            <div class="project noproject col-lg-6 col-sm-6 col-xs-12 col-lg-offset-3 col-sm-offset-3">
-                <div class="up-arrow"></div>
-                <div>Click the toggles above to turn categories on and off</div>
-            </div>
-            -->
             {% for project in site.posts %}
                 {% if project.is_blog contains "false" %}
                     <div data-link="{{ project.url }} " class="project clickable {{ project.tile_size }} {{ project.column_size }} {{ project.classes }}">
@@ -48,9 +38,5 @@ custom_js: [ 'packery.pkgd.min', 'jquery.isotope.min', 'main' ]
         <li><a class="active" id="professional">Professional</a></li>
         <li><a class="active" id="code">Code</a></li>
         <li><a class="active" id="film-and-animation">Film and Animation</a></li>
-        <!--
-        <li><a class="active" id="photography">Photography</a></li>
-        <li><a class="active" id="painting">Painting</a></li>
-        -->
     </ul>
 </div>
