@@ -2,8 +2,8 @@
 layout: project
 title: Assorted Hackathons
 full_title: Assorted Hackathon Projects
-tile_size: item2
-column_size: col-lg-8 col-sm-8 col-xs-12
+tile_size: item1
+column_size: col-lg-4 col-sm-4 col-xs-12
 categories: ['code']
 classes: code
 bg_image: code/dogecache/dogecache.jpg
