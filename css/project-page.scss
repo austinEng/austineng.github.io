@@ -22,8 +22,26 @@ h4 {
   margin-bottom: 10px;
 }
 
-img {
+video, img {
   width: 100%;
+}
+
+#project-outer-container {
+  li {
+    font-size: 18px;
+  }
+}
+
+pre {
+  color: white;
+  background-color: black;
+  border-color: #222;
+}
+
+code {
+  color: white;
+  background-color: black;
+  font-size: 80%;
 }
 
 .caption {
