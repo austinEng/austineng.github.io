@@ -11,7 +11,7 @@
   }
 }
 
-p {
+p, li {
   font-size: 18px;
 }
 
@@ -82,4 +82,16 @@ a:hover {
       background-color: $null-color;
     }
   }
+}
+
+pre {
+  color: white;
+  background-color: black;
+  border-color: #222;
+}
+
+code {
+  color: white;
+  background-color: black;
+  font-size: 80%;
 }
