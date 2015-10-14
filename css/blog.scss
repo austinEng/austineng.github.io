@@ -11,7 +11,7 @@
   }
 }
 
-p, li {
+p {
   font-size: 18px;
 }
 
@@ -94,4 +94,10 @@ code {
   color: white;
   background-color: black;
   font-size: 80%;
+}
+
+#project-outer-container {
+  li {
+    font-size: 18px;
+  } 
 }
