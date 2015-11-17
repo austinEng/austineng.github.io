@@ -139,7 +139,6 @@ summary: A 3D modeling program developed with C++, OpenGL, and GLSL
 	</div>
 </div>
 
-
 <h3 id="ray-tracer">Ray Tracer</h3>
 <div class="row alternating-row">
 	<div class="col-lg-8 col-md-6">

@@ -83,3 +83,21 @@ a:hover {
     }
   }
 }
+
+pre {
+  color: white;
+  background-color: black;
+  border-color: #222;
+}
+
+code {
+  color: white;
+  background-color: black;
+  font-size: 80%;
+}
+
+#project-outer-container {
+  li {
+    font-size: 18px;
+  } 
+}
