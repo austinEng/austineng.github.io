@@ -1,6 +1,6 @@
 ---
 layout: blog
-categories: blog 2015 11 11
+categories: blog 2015 11 1
 excerpt: Estimating Direct Lighting in a Pathtracer
 title: Direct Lighting Estimation - CIS 560
 ---
