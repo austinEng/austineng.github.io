@@ -24,6 +24,9 @@ title: Direct Lighting Estimation - CIS 560
 <p>This results in soft shadows because regions that are only partially occluded by an obstacle will pick a sample on the light that is visible with some probability <i>p</i>. If we do this many times and take multiple samples, on average, the calculated lighting from that light source will be <i>p</i> times the unobstructed energy from that light.</p>
 
 <h2>Non-Planar Light Sources</h2>
+
+<p>For my project I also did some extra work to make implementations of cube and spherical light sources instead of just planar sources. Sampling these sources is relatively straight forward (just some extra trigonometry for spheres to uniformly sample a point, although the naive method will not be uniform if the geometry is scaled nonuniformly). The one trick is to ensure that the dot product of the light's normal and the ray from the light to the object is positive (that the emitted light has some non-negative contribution). Because of the convex and symmetric nature of spheres, achieving this is relatively straightforward. If the sampled point is not facing the desired geometry, we simply pick the point directly opposite. For cubes this is a little bit more tricky, but one method is to first find the faces that face our object, and then randomly sample on those.</p>
+
 <div class="row">
   <div class="col-sm-4 col-sm-offset-2 col-xs-12">
     <a href="/img/560/direct_lighting/cube_light.bmp"><img src="/img/560/direct_lighting/cube_light.bmp"/></a>
@@ -34,8 +37,6 @@ title: Direct Lighting Estimation - CIS 560
     <div class="caption">Illumination from a green sphere light</div>
   </div>
 </div>
-
-<p>For my project I also did some extra work to make implementations of cube and spherical light sources instead of just planar sources. Sampling these sources is relatively straight forward (just some extra trigonometry for spheres to uniformly sample a point, although the naive method will not be uniform if the geometry is scaled nonuniformly). The one trick is to ensure that the dot product of the light's normal and the ray from the light to the object is positive (that the emitted light has some non-negative contribution). Because of the convex and symmetric nature of spheres, achieving this is relatively straightforward. If the sampled point is not facing the desired geometry, we simply pick the point directly opposite. For cubes this is a little bit more tricky, but one method is to first find the faces that face our object, and then randomly sample on those.</p>
 
 <p>I also implmented meshes as light sources, but this is currently horribly inefficient. Because meshes can be concave, you have no easy way of intelligently picking a point that can see the geometry. I currently do rejection sampling and just randomly sample again if the point is not visible. Thinking about this problem again, perhaps it is viable to just ignore the ray's intersections with geometry from the light from which it came. A ray of light coming from a surface point <i>p</i> that intersects with another point <i>q</i> could be treated as if it came from <i>q</i>.</p>
 
