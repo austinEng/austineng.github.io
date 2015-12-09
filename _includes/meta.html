@@ -10,7 +10,7 @@
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
     {% endif %}
-    <meta name="author" content="{{ site.name }}" />
+    <meta name="author" content="Austin Eng" />
     <meta name="site_name" property="og:site_name" content="{{ site.name }}" />
 
     {% if page.full_title %}
@@ -22,8 +22,14 @@
     {% endif %}
 
     <meta name="keywords" content="{{page.keywords | join: ', '}}"/>
-    <meta name="url" property="og:url" content="{{ page.url }}"/>
+    <meta name="url" property="og:url" content="http://austin-eng.co{{ page.url }}"/>
 
-    <meta property="og:image" content="//austineng.github.io/logo.png"/>
-    <meta property="twitter:image" content="//austineng.github.io/logo.png"/>
-    <meta name="theme-color" content="#43b117">
+    <meta property="og:type" content="website" /> 
+    {% if page.img %}
+    <meta property="og:image" content="http://austin-eng.co{{ page.img }}"/>
+    <meta property="twitter:image" content="http://austin-eng.co{{ page.img }}"/>
+    {% elsif page.img %}
+    <meta property="og:image" content="http://austin-eng.co/logo.png"/>
+    <meta property="twitter:image" content="http://austin-eng.co/logo.png"/>
+    {% endif %}
+    <meta name="theme-color" content="#0F0F0F">

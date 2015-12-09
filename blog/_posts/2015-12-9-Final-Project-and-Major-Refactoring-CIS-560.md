@@ -3,6 +3,7 @@ layout: blog
 categories: blog 2015 12 9
 excerpt: Final project for computer graphics - Approximate Agglomerative Clustering BVH, thread scheduling and concurrency, progressive rendering, sobol quasi-random sampling, multiple importance sampling
 title: Final Project and Major Refactoring
+img: /img/560/bvh/bvh.png
 ---
 
 <p>My final project for CIS 560 required some major code refactoring. My previous code was fairly inefficient and poorly structured. Without a well-built modular program it would have been significantly more difficult to get the project done. I've always been interested in getting my renders to complete faster, so I focused mostly on building optimizations into my pathtracer project. The first of these is BVH construction with Approximate Agglomerative Clustering.</p>
