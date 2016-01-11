@@ -9,16 +9,16 @@ defaults:
   -
     scope:
       path: ""
-      type: posts
+      type: post
     values:
       layout: project
       is_blog: ["false"]
   -
     scope:
       path: "blog"
-      type: posts
+      type: post
     values:
-      layout: blogpost
+      layout: blog
       is_blog: ["true"]
       author: Austin Eng
 
