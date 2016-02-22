@@ -22,7 +22,7 @@ defaults:
       is_blog: ["true"]
       author: Austin Eng
 
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 
 sass:
