@@ -1,0 +1,123 @@
+// body {
+//   margin: 0;
+//   top: 0;
+//   position: relative;
+// }
+
+@import (less) "../../node_modules/normalize.css/normalize.css";
+
+@import (reference) 'theme.less';
+
+* {
+  box-sizing: border-box;
+  color: @col-text;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+a {
+  color: @col-text;
+  &:hover {
+    color: white;
+  }
+}
+
+html, body {
+  background-color: #222;
+}
+
+body {
+  padding-bottom: 100px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: @col-title;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+}
+
+h2, h3 {
+  color: @col-main;
+}
+
+h4 {
+  font-weight: 300;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin: 0;
+  & + p {
+    margin-top: 1em;
+  }
+}
+
+li {
+  & + li {
+    margin-top: 0.5em;
+  }
+}
+
+p, span, li {
+  line-height: 1.2em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid white;
+  margin: 0 10%;
+  margin-bottom: 2em;
+}
+
+body.open {
+  overflow: hidden;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+b, strong {
+  font-weight: 600;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 30px @col-main;
+}
+
+.aspect-ratio(@width, @height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: (@height / @width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.aspect16x9 {
+  .aspect-ratio(16, 9);
+}
