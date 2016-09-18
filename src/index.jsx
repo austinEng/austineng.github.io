@@ -3,11 +3,19 @@ import {connect} from 'react-redux'
 import Splash from './splash'
 import Projects from './projects'
 import classnames from 'classnames'
+import {openProject} from './actions'
 require('./style/main.less')
 
 class Index extends React.Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    this.props.dispatch(openProject(location.hash.substring(1)))
+    window.addEventListener('hashchange', () => {
+      this.props.dispatch(openProject(location.hash.substring(1)))
+    })
   }
 
   render() {

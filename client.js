@@ -21490,6 +21490,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
+	var _actions = __webpack_require__(205);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21510,6 +21512,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  _createClass(Index, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      this.props.dispatch((0, _actions.openProject)(location.hash.substring(1)));
+	      window.addEventListener('hashchange', function () {
+	        _this2.props.dispatch((0, _actions.openProject)(location.hash.substring(1)));
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -23399,6 +23411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              _this3.setState({
 	                hasLoaded: true
 	              });
+	              location.hash = _this3.props.title;
 	              _this3.props.setOpen();
 	            },
 	            onMouseOver: function onMouseOver(e) {

@@ -70,6 +70,7 @@ class _Project extends React.Component {
             this.setState({
               hasLoaded: true
             })
+            location.hash = this.props.title
             this.props.setOpen()
           }}
           onMouseOver={(e) => {
