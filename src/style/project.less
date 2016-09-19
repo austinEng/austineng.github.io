@@ -68,6 +68,7 @@
   left: @margin;
   right: @margin;
   bottom: @margin;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
 
   background-size: cover;
   background-position-x: center;
@@ -99,6 +100,16 @@
       color: @col-main;
     }
   }
+  .repo {
+    float: right;
+    text-decoration: none;
+    &:before {
+      font-size: 22px;
+      margin-left: 5px;
+      font-family: FontAwesome;
+      content: "\F09b";
+    }
+  }
 }
 
 .project-popover {
@@ -115,6 +126,24 @@
   -webkit-transition: left ease 0.5s, boxShadow ease 0.5s;
   -moz-transition: left ease 0.5s, boxShadow ease 0.5s;
   -o-transition: left ease 0.5s, boxShadow ease 0.5s;
+
+  .repo {
+    text-decoration: none;
+    &:before {
+      font-family: FontAwesome;
+      content: "\F09b";
+    }
+  }
+
+  h2.additional-links {
+    text-align: center;
+    font-size: 3em;
+    margin: 0;
+    margin-bottom: -0.5em;
+    a {
+      text-decoration: none;
+    }
+  }
 
   &.in {
     box-shadow: 0 0 20px 0 rgba(0,0,0,0.5);

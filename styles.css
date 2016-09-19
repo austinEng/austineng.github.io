@@ -98,6 +98,7 @@
   left: 10px;
   right: 10px;
   bottom: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
   background-size: cover;
   background-position-x: center;
   background-position-y: 0px;
@@ -130,6 +131,16 @@
   font-weight: 300;
   color: #40b727;
 }
+.project .repo {
+  float: right;
+  text-decoration: none;
+}
+.project .repo:before {
+  font-size: 22px;
+  margin-left: 5px;
+  font-family: FontAwesome;
+  content: "\F09B";
+}
 .project-popover {
   position: fixed;
   background-color: #333;
@@ -143,6 +154,22 @@
   -webkit-transition: left ease 0.5s, boxShadow ease 0.5s;
   -moz-transition: left ease 0.5s, boxShadow ease 0.5s;
   -o-transition: left ease 0.5s, boxShadow ease 0.5s;
+}
+.project-popover .repo {
+  text-decoration: none;
+}
+.project-popover .repo:before {
+  font-family: FontAwesome;
+  content: "\F09B";
+}
+.project-popover h2.additional-links {
+  text-align: center;
+  font-size: 3em;
+  margin: 0;
+  margin-bottom: -0.5em;
+}
+.project-popover h2.additional-links a {
+  text-decoration: none;
 }
 .project-popover.in {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);

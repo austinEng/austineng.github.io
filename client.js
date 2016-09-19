@@ -23383,6 +23383,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	              'div',
 	              { className: 'container' },
 	              _react2.default.createElement(
+	                'h2',
+	                { className: 'additional-links' },
+	                this.props.repo ? _react2.default.createElement('a', { className: 'repo', href: this.props.repo }) : null
+	              ),
+	              _react2.default.createElement(
 	                'h1',
 	                null,
 	                this.props.title
@@ -23437,6 +23442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _react2.default.createElement(
 	            'div',
 	            { ref: 'summary', className: 'summary' },
+	            this.props.repo ? _react2.default.createElement('a', { className: 'repo', href: this.props.repo }) : null,
 	            _react2.default.createElement(
 	              'h3',
 	              null,
@@ -23502,7 +23508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          { className: 'projects-wrapper clearfix' },
 	          _react2.default.createElement(
 	            Project,
-	            { title: 'Boids', summary: 'GPU Flocking simulation written in CUDA which easily handles half a million agents at 60fps+', thumbnail: 'img/boids.png', 'thumbnail-hq': 'img/boids.gif' },
+	            { title: 'Boids', summary: 'GPU Flocking simulation written in CUDA which easily handles half a million agents at 60fps+', thumbnail: 'img/boids.png', 'thumbnail-hq': 'img/boids.gif', repo: '//github.com/austinEng/Project1-CUDA-Flocking' },
 	            _react2.default.createElement(
 	              'h2',
 	              null,
@@ -23661,7 +23667,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	          ),
 	          _react2.default.createElement(
 	            Project,
-	            { title: 'BioCrowds', summary: 'Realtime, 60fps+, WebGL crowd navigation inspired by spatial colonization algorithms and implemented with shaders', thumbnail: 'img/biocrowds.png', 'thumbnail-hq': 'img/biocrowds.gif' },
+	            { title: 'BioCrowds', summary: 'Realtime, 60fps+, WebGL crowd navigation inspired by spatial colonization algorithms and implemented with shaders', thumbnail: 'img/biocrowds.png', 'thumbnail-hq': 'img/biocrowds.gif', repo: '//github.com/austinEng/CrowdsJS' },
+	            _react2.default.createElement(
+	              'h1',
+	              { style: { 'fontSize': '30px' } },
+	              _react2.default.createElement(
+	                'a',
+	                { href: '//austin-eng.co/CrowdsJS/', style: { 'textDecoration': 'none' } },
+	                'Demo!'
+	              )
+	            ),
 	            _react2.default.createElement(
 	              'h2',
 	              null,
@@ -23760,7 +23775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          ),
 	          _react2.default.createElement(
 	            Project,
-	            { title: 'FLIP/PIC Fluid Solver', summary: 'Highly concurrent C++ fluid solver capable of simulating over one million particles', thumbnail: 'img/flip.png', 'thumbnail-hq': 'img/flip.gif' },
+	            { title: 'FLIP/PIC Fluid Solver', summary: 'Highly concurrent C++ fluid solver capable of simulating over one million particles', thumbnail: 'img/flip.png', 'thumbnail-hq': 'img/flip.gif', repo: '//github.com/austinEng/FLIP-PIC-Fluid-Solver' },
 	            _react2.default.createElement(
 	              'h2',
 	              null,

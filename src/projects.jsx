@@ -44,6 +44,9 @@ class _Project extends React.Component {
         <div className='scrollable'>
           <br />
           <div className='container'>
+            <h2 className='additional-links'>
+              {this.props.repo ? <a className='repo' href={this.props.repo}></a> : null}
+            </h2>
             <h1>{this.props.title}</h1>
             <hr />
             {this.props.children}
@@ -88,6 +91,7 @@ class _Project extends React.Component {
             'backgroundPositionY': this.state.backgroundPos
           }}>
           <div ref='summary' className='summary'>
+            {this.props.repo ? <a className='repo' href={this.props.repo}></a> : null}
             <h3>{this.props.title}</h3>
             <p>{this.props.summary}</p>
           </div>
@@ -131,7 +135,7 @@ export default class Projects extends React.Component {
         <h1 className='title'>Projects</h1>
         <hr />
         <div className='projects-wrapper clearfix'>
-          <Project title="Boids" summary="GPU Flocking simulation written in CUDA which easily handles half a million agents at 60fps+" thumbnail='img/boids.png' thumbnail-hq='img/boids.gif'>
+          <Project title="Boids" summary="GPU Flocking simulation written in CUDA which easily handles half a million agents at 60fps+" thumbnail='img/boids.png' thumbnail-hq='img/boids.gif' repo='//github.com/austinEng/Project1-CUDA-Flocking'>
             <h2>Introduction</h2>
             <p>Boids is a crowd simulation algorithm developed by Craig Reynolds in 1986 which is modeled after the flocking behaviors exibited by birds and fish. It most simply operates on three rules:</p>
             <ol>
@@ -182,7 +186,8 @@ export default class Projects extends React.Component {
 
             <p>All methods also show slightly decreased performance as we increase the block size from 128 towards 1024 (max). Because the GPU I tested can have a maximum of 2048 active threads, this means that as we increase the block size, the number of blocks we can have decreases. At a size of 1024, there can only be two blocks. Threads in a block are organized in warps (groups of 32 threads) and only one warp can execute at a time. Therefore it seems that in an attempt to allow more threads to share the same memory by increasing block size, we've made the execution of the threads slightly more synchronous.</p>
           </Project>
-          <Project title="BioCrowds" summary="Realtime, 60fps+, WebGL crowd navigation inspired by spatial colonization algorithms and implemented with shaders" thumbnail='img/biocrowds.png' thumbnail-hq='img/biocrowds.gif'>
+          <Project title="BioCrowds" summary="Realtime, 60fps+, WebGL crowd navigation inspired by spatial colonization algorithms and implemented with shaders" thumbnail='img/biocrowds.png' thumbnail-hq='img/biocrowds.gif' repo='//github.com/austinEng/CrowdsJS'>
+            <h1 style={{'fontSize':'30px'}}><a href='//austin-eng.co/CrowdsJS/' style={{'textDecoration':'none'}}>Demo!</a></h1>
             <h2>Introduction</h2>
             <a href='http://www.sciencedirect.com/science/article/pii/S0097849311001713'>BioCrowds</a> is a crowd simulation algorithm developed by Alessandro de Lima Bicho, Rafael Araújo Rodrigues, Soraia Raupp Musse, Cláudio Rosito Jung, Marcelo Paravisi, and Léo Pini Magalhães. I had the pleasure of being able to personally work with Soraia and Cláudio in my crowd simulation class.
             <blockquote>
@@ -213,7 +218,7 @@ export default class Projects extends React.Component {
             <p>The previous computations assumed that all agents were points. Because the agents in this simulation have some radius, we run a postpass on the voronoi diagram which shrinks each cell by the appropriate amount. This prevents the later computed pixel contributions from causing the agents to intersect trajectories.</p>
             <p></p>
           </Project>
-          <Project title="FLIP/PIC Fluid Solver" summary="Highly concurrent C++ fluid solver capable of simulating over one million particles" thumbnail='img/flip.png' thumbnail-hq='img/flip.gif'>
+          <Project title="FLIP/PIC Fluid Solver" summary="Highly concurrent C++ fluid solver capable of simulating over one million particles" thumbnail='img/flip.png' thumbnail-hq='img/flip.gif' repo='//github.com/austinEng/FLIP-PIC-Fluid-Solver'>
             <h2>Introduction</h2>
             <p>FLIP/PIC is a hybrid fluid simulation method proposed by Yongning Zhu and Robert Bridson in <a href="https://www.cs.ubc.ca/~rbridson/docs/zhu-siggraph05-sandfluid.pdf">Animating Sand as a Fluid</a>. It is a combination of FLIP (fluid-implicit-particle) and PIC (particle-in-cell) techniques. One of the core ideas is that some computations are simpler from a Langrangian point of view (per particle), and some computations are simplier from an Eulerian point of view (per position in space). For fluids, keeping track of positions and velocities is much more straight forward with the former method, allowing us to easily keep track of particle positions and update them based on their velocities. However, computing pressure forces is simplified on a fixed uniform grid because it is much easier to compute divergences at fixed intervals in space.</p>
             <p>The FLIP/PIC method solves the problem by projecting fluid attributes onto a fixed grid, performing grid-level pressure and force computations, and then mapping velocities back to the original particles. The FLIP part of the name involves adding the CHANGE in grid cell velocity to the original particle while PIC simply sets the new particle velocity to that of the grid. The former results in more chaotic motion because original particle velocities are preserved while the latter results in a smoothing of the simulation. The solver which I chose to implement is 95% FLIP and 5% PIC.</p>
