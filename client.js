@@ -23263,6 +23263,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            { ref: 'contactBar', className: 'contact-bar' },
 	            _react2.default.createElement('a', { id: 'linkedin', href: '//www.linkedin.com/in/austineng' }),
 	            _react2.default.createElement('a', { id: 'git', href: '//github.com/austinEng' })
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'a',
+	            { href: '/resume.pdf', style: { 'textDecoration': 'none', 'fontSize': '20px' } },
+	            'Resume'
 	          )
 	        )
 	      );

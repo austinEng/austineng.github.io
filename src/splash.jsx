@@ -45,6 +45,8 @@ export default class Splash extends React.Component {
             <a id='git' href='//github.com/austinEng'>
             </a>
           </div>
+          <br />
+          <a href='/resume.pdf' style={{'textDecoration': 'none', 'fontSize':'20px'}}>Resume</a>
         </div>
       </div>
     )
