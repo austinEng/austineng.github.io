@@ -24592,7 +24592,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	module.exports = {
-	  routes: ['/'],
+	  routes: ['/', '/resume'],
 	  title: 'Austin Eng - Technical Portfolio'
 	};
 

@@ -1,0 +1,149 @@
+
+
+#resume {
+  width: 8.5in;
+  height: 11in;
+  margin: auto;
+  margin-top: 1in;
+  margin-bottom: 1in;
+  padding: 0.3in;
+  padding-top: 0.3in;
+  padding-left: 0.25in;
+  padding-right: 0.35in;
+  background-color: white;
+
+  @media print {
+    margin: 0;
+  }
+
+  @col-bg: #1b1b1b;
+  @col-main: #40b727;
+  @col-text: #444;
+  @col-title: #222;
+
+  @side-width: 130px;
+  @item-title-size: 16px;
+  @item-subtitle-size: 15px;
+  @item-size: 13px;
+
+  * {
+    color: @col-text;
+    letter-spacing: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: @col-title;
+    margin: 0;
+    text-align: left;
+    font-weight: 300;
+  }
+
+  h2 {
+    color: @col-main;
+  }
+  p, span, li {
+    line-height: 1.1em;
+  }
+
+  @page {
+    margin: 0;
+  }
+  header, section {
+    width: 100%;
+    padding-left: @side-width;
+    position: relative;
+  }
+
+  #head {
+    .dot {
+      color: @col-main;
+    }
+    h1 {
+      font-size: 60px;
+      letter-spacing: 26px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    h2 {
+      font-size: 30px;
+      text-transform: uppercase;
+      letter-spacing: 3.3px;
+    }
+    h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      a {
+        font-family: Raleway;
+      }
+    }
+    img {
+      position: absolute;
+      left: 0px;
+      width: 100px;
+      margin-left: 7px;
+    }
+    span {
+      margin: 0px 6px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  section {
+    margin-top: 10px;
+    h1 {
+      text-transform: uppercase;
+      font-weight: 300;
+      position: absolute;
+      top: 1px;
+      left: 0px;
+      text-align: right;
+      width: @side-width;
+      font-size: @item-title-size;
+      padding-right: 20px;
+    }
+
+    .item {
+      .dot {
+        margin: 0px 10px;
+      }
+      h2 {
+        text-transform: uppercase;
+        font-size: @item-title-size;
+        font-weight: 600;
+        .date {
+          font-weight: 400;
+        }
+      }
+      h3 {
+        font-weight: 600;
+        margin-top: 0.1em;
+        text-transform: uppercase;
+        font-size: @item-subtitle-size;
+        .skills {
+          font-weight: 400;
+        }
+      }
+    }
+    ul {
+      list-style-type: circle;
+      margin: 0;
+      padding: 0;
+      li {
+        font-size: @item-size;
+        margin-top: 0.2em;
+      }
+    }
+    p {
+      font-size: @item-size;
+    }
+    strong {
+      font-weight: 500;
+    }
+    .item + .item {
+      margin-top: 10px;
+    }
+  }
+}
