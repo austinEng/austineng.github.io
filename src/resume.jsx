@@ -63,7 +63,7 @@ export default class Resume extends React.Component {
               <Dot />
               <a href='mailto:austineng.inr@gmail.com'>austineng.inr@gmail.com</a>
               <Dot />
-              732.685.3057
+              732.737.7839
             </h3>
           </header>
           <Section name="Education">
