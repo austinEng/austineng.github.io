@@ -122,8 +122,8 @@ generatePosts(function(paths, post_data) {
       colors: true
     }));
 
-    if (fs.existsSync('./init.js')) {
-      fs.unlink('./init.js')
+    if (fs.existsSync('./dist/init.js')) {
+      fs.unlink('./dist/init.js')
     }
 
     fs.writeFile("dist/CNAME", "austin-eng.co")
