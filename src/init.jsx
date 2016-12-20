@@ -1,32 +1,33 @@
 import React from 'react'
-import {renderToString, renderToStaticMarkup} from 'react-dom/server'
-
-import Index from './index'
-import Resume from './resume'
+import {renderToString} from 'react-dom/server'
+import { match, RouterContext } from 'react-router'  
+import routes from './routes'
 
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import reducer from './reducer'
+import reducer from './redux/reducer'
 
 module.exports = function render(locals, callback) {
-  const store = createStore(reducer, locals)
+  var {posts, tagged} = locals;
+  var post_data = {posts, tagged};
+  const store = createStore(reducer, {post_data})
 
-  let html
-  switch(locals.path) {
-    case '/':
-      html = renderToString(
-        <Provider store={store}>
-          <Index />
-        </Provider>
-      )
-      callback(null, '<!DOCTYPE html>' + html)
-      break;
-    case '/resume':
-      html = renderToStaticMarkup(
-        <Resume />
-      )
-      callback(null, '<!DOCTYPE html>' + html)
-      break;
-  }
+  match({
+    routes,
+    location: locals.path
+  }, (error, redirectLocation, renderProps) => {
 
+    callback(null, `<!DOCTYPE html>${renderToString(
+      <RouterContext 
+        {...renderProps}
+        createElement={(Component, props) => {
+          return (
+          <Provider store={store}>
+            <Component {...props} />
+          </Provider>
+          )
+        }} 
+      />
+    )}`)
+  })
 }
