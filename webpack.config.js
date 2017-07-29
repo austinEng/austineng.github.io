@@ -2,11 +2,13 @@ var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path')
 var data = require('./src/data')
+var webpack = require('webpack')
 
 module.exports = {
   entry: {
     'init': './src/init.jsx',
-    'client': './src/client.jsx'
+    'main': './src/client.jsx',
+    'resume': './src/resume.jsx'
   },
   output: {
     path: __dirname,
@@ -14,25 +16,63 @@ module.exports = {
     libraryTarget: 'umd'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js(x)?$/,
         exclude: /node_modules/,
-        loader: "babel"
+        loader: "babel-loader",
+        options: {
+          presets: [
+            "react",
+            ["es2015", {modules: false}],
+          ]
+        }
       }, {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                modules: true,
+                sourceMap: true,
+              },
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                config: {
+                },
+                sourceMap: true
+              }
+            },
+            {
+              loader: "less-loader",
+              options: {
+                sourceMap: true
+              }
+            },
+          ]
+        }),
       }
     ]
   },
-  lessLoader: {
-    includePaths: [path.resolve(__dirname, "./src/style")]
-  },
   resolve: {
-    extensions: ['.jsx', '.js', '']
+    extensions: ['.jsx', '.js']
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      test: /\.less$/, // may apply this only for some modules
+      options: {
+        lessLoader: {
+          includePaths: [path.resolve(__dirname, "./src/style")]
+        },
+      }
+    }),
     new StaticSiteGeneratorPlugin('init.js', data.routes, data),
-    new ExtractTextPlugin('styles.css')
-  ]
+    new ExtractTextPlugin('[name].css')
+  ],
+  devtool: 'source-map'
 }

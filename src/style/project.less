@@ -1,6 +1,6 @@
 @import (reference) 'theme.less';
 
-.projects-wrapper, .container {
+.projects-wrapper {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -12,31 +12,15 @@
   width: 100%;
 }
 
-.container {
-  width: 100%;
-}
-
 @media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
   .project-wrapper {
     width: 50%;
   }
 }
 
 @media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
   .project-wrapper {
     width: 33%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
   }
 }
 
@@ -161,6 +145,7 @@
     top: 0;
     left: 0;
     overflow: auto;
+    padding-bottom: 50px;
   }
 
   .close-btn {

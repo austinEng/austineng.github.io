@@ -1,5 +1,6 @@
 import React from 'react'
-require('./style/splash.less')
+import mainStyles from './style/main.less'
+import styles from './style/splash.less'
 
 export default class Splash extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class Splash extends React.Component {
 
     let email_link = document.createElement('a')
     email_link.setAttribute('href', 'mailto:' + 'austineng' + '.' + 'inr' + '@' + 'gmail' + '.' + 'com')
-    email_link.setAttribute('id', 'email')
+    email_link.setAttribute('id', styles.email)
     this.refs.contactBar.appendChild(email_link)
   }
 
@@ -34,15 +35,15 @@ export default class Splash extends React.Component {
 
   render() {
     return (
-      <div id='splash' style={{'height': this.state.height}}>
-        <div className='title container'>
-          <img id='logo' src='logo.png' />
+      <div id={styles.splash} style={{'height': this.state.height}}>
+        <div className={`${styles.title} ${mainStyles.container}`}>
+          <img id={styles.logo} src='logo.png' />
           <h1>Austin Eng</h1>
           <h2>Software Engineer <span style={{'color':'#d3d3d3'}}>&#183;</span> University of Pennsylvania &#39;18</h2>
-          <div ref='contactBar' className='contact-bar'>
-            <a id='linkedin' href='//www.linkedin.com/in/austineng'>
+          <div ref='contactBar' className={styles['contact-bar']}>
+            <a id={styles.linkedin} href='//www.linkedin.com/in/austineng'>
             </a>
-            <a id='git' href='//github.com/austinEng'>
+            <a id={styles.git} href='//github.com/austinEng'>
             </a>
           </div>
           <br />

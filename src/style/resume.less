@@ -7,7 +7,7 @@
   margin-top: 1in;
   margin-bottom: 1in;
   padding: 0.3in;
-  padding-top: 0.3in;
+  padding-top: 0.25in;
   padding-left: 0.25in;
   padding-right: 0.35in;
   background-color: white;
@@ -22,13 +22,14 @@
   @col-title: #222;
 
   @side-width: 130px;
-  @item-title-size: 16px;
-  @item-subtitle-size: 15px;
-  @item-size: 13px;
+  @item-title-size: 1.1em;//1.2em;
+  @item-subtitle-size: 1em;//1.1em;
+  @item-size: 1em;
+  @list-item-size: 0.85em;
 
+  font-size: 8.7pt;
   * {
     color: @col-text;
-    letter-spacing: auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -42,6 +43,10 @@
     color: @col-main;
   }
   p, span, li {
+    line-height: 1em;
+  }
+
+  h3 {
     line-height: 1.1em;
   }
 
@@ -107,7 +112,7 @@
 
     .item {
       .dot {
-        margin: 0px 10px;
+        margin: 0 0.5em;
       }
       h2 {
         text-transform: uppercase;
@@ -128,12 +133,18 @@
       }
     }
     ul {
-      list-style-type: circle;
+      list-style: none;
       margin: 0;
       padding: 0;
       li {
-        font-size: @item-size;
         margin-top: 0.2em;
+        font-size: @list-item-size;
+        line-height: 1 / @list-item-size;
+        &::before {
+          content: '\2022';
+          position: absolute;
+          left: @side-width - 10px;
+        }
       }
     }
     p {
@@ -144,6 +155,12 @@
     }
     .item + .item {
       margin-top: 10px;
+    }
+  }
+
+  .role {
+    + .role {
+      margin-top: 0.5em;
     }
   }
 }

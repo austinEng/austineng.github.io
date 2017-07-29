@@ -4,7 +4,7 @@ import Splash from './splash'
 import Projects from './projects'
 import classnames from 'classnames'
 import {openProject} from './actions'
-require('./style/main.less')
+import styles from './style/main.less'
 
 class Index extends React.Component {
   constructor(props) {
@@ -25,13 +25,14 @@ class Index extends React.Component {
           <title>{this.props.title}</title>
           <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600|Raleway:100,300" rel="stylesheet" />
           <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
-          <link rel='stylesheet' type='text/css' href='styles.css' />
+          <link rel='stylesheet' type='text/css' href='main.css' />
           <link rel='icon' href='logo.png' />
+          <meta charSet="utf-8" />
         </head>
-        <body className={classnames({'open': this.props.open})}>
+        <body className={classnames({[styles.open]: this.props.open})}>
           <Splash />
           <Projects />
-          <script src='client.js'></script>
+          <script src='main.js'></script>
         </body>
       </html>
     )

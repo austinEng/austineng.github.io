@@ -1,2 +1,7 @@
 node_modules
 init.js
+*.map
+resume.js
+*.css
+!main.css
+!resume.css
