@@ -3,7 +3,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {openProject, closeProject} from './actions'
 import classnames from 'classnames'
-require('./style/project.less')
+import mainStyles from './style/main.less'
+import styles from './style/project.less'
 
 class _Project extends React.Component {
   constructor(props) {
@@ -40,19 +41,19 @@ class _Project extends React.Component {
     var popover
     if (this.props.open) {
       popover =
-      <div className={classnames({'project-popover': true, 'in': this.props.open})}>
-        <div className='scrollable'>
+      <div className={classnames({[styles['project-popover']]: true, [styles.in]: this.props.open})}>
+        <div className={styles.scrollable}>
           <br />
-          <div className='container'>
-            <h2 className='additional-links'>
-              {this.props.repo ? <a className='repo' href={this.props.repo}></a> : null}
+          <div className={mainStyles.container}>
+            <h2 className={styles['additional-links']}>
+              {this.props.repo ? <a className={styles.repo} href={this.props.repo}></a> : null}
             </h2>
             <h1>{this.props.title}</h1>
             <hr />
             {this.props.children}
           </div>
         </div>
-        <a className='close-btn' href='#' onClick={() => {
+        <a className={styles['close-btn']} href='#' onClick={() => {
           process.nextTick(() => {
             document.body.scrollTop = this.scroll
           })
@@ -61,13 +62,13 @@ class _Project extends React.Component {
       </div>
     } else {
       popover =
-      <div className={classnames({'project-popover': true, 'in': this.props.open})}>
+      <div className={classnames({[styles['project-popover']]: true, [styles.in]: this.props.open})}>
       </div>
     }
 
     return (
-      <div className='project-wrapper'>
-        <div className='project'
+      <div className={styles['project-wrapper']}>
+        <div className={styles.project}
           onClick={() => {
             this.scroll = document.body.scrollTop
             this.setState({
@@ -90,8 +91,8 @@ class _Project extends React.Component {
             'backgroundImage': `url(${this.state.hover ? this.state.thumbnail || this.props.thumbnail : this.props.thumbnail})`,
             'backgroundPositionY': this.state.backgroundPos
           }}>
-          <div ref='summary' className='summary'>
-            {this.props.repo ? <a className='repo' href={this.props.repo}></a> : null}
+          <div ref='summary' className={styles.summary}>
+            {this.props.repo ? <a className={styles.repo} href={this.props.repo}></a> : null}
             <h3>{this.props.title}</h3>
             <p>{this.props.summary}</p>
           </div>
@@ -132,9 +133,9 @@ export default class Projects extends React.Component {
   render() {
     return (
       <main>
-        <h1 className='title'>Projects</h1>
+        <h1 className={styles.title}>Projects</h1>
         <hr />
-        <div className='projects-wrapper clearfix'>
+        <div className={styles['projects-wrapper'] + ' ' + mainStyles.clearfix}>
           <Project title="Boids" summary="GPU Flocking simulation written in CUDA which easily handles half a million agents at 60fps+" thumbnail='img/boids.png' thumbnail-hq='img/boids.gif' repo='//github.com/austinEng/Project1-CUDA-Flocking'>
             <h2>Introduction</h2>
             <p>Boids is a crowd simulation algorithm developed by Craig Reynolds in 1986 which is modeled after the flocking behaviors exibited by birds and fish. It most simply operates on three rules:</p>
@@ -144,7 +145,7 @@ export default class Projects extends React.Component {
               <li>Separation: Boids will try to keep some amount of distance between them and other boids.</li>
             </ol>
 
-            <div className='media'>
+            <div className={styles.media}>
               <img src='img/boids.gif' />
             </div>
 
@@ -166,18 +167,18 @@ export default class Projects extends React.Component {
             <h2>Performance Analysis</h2>
             <h4>Varying Boid Count</h4>
             <p>Tests were done using a block size of 128. cudaTimer was used to measure the number of elapsed milliseconds to compute each frame. The average time for 1000 frames was recorded.</p>
-            <div className='media'>
+            <div className={styles.media}>
               <img src='img/particleCount_vs_msframe.png' />
             </div>
             <p>We can see that using uniform grids greatly improves performance and that adding coherence is even more performant. This makes sense because the uniform grid significantly reduces the number of boids that need to be checked against, and adding coherence makes memory access much faster. It&#39;s interesting to note, however, that the graphs of all three methods appear to be piecewise functions. They will increase exponentially at one rate (note the log scale) and then suddenly jump and increase at a different rate. Below is a graph with fine resolution exploring this phenomenon more deeply.</p>
-            <div className='media'>
+            <div className={styles.media}>
               <img src='img/particleCount_vs_msframe_fine.png' />
             </div>
             <p>Note the large jumps at about (5300, 5500), (16400, 16500), (31200, 31300), and (43600, 43700). I think that this may be happening because in some situations, the number of boids does not map well to the underlying architecture and memory access becomes less efficient.</p>
 
             <h4>Varying Block Size</h4>
             <p>Tests were done using 5000 boids. cudaTimer was used to measure the number of elapsed milliseconds to compute each frame. The average time for 1000 frames was recorded.</p>
-            <div className='media'>
+            <div className={styles.media}>
               <img src='img/blockSize_vs_relative_msframe.png' />
             </div>
             <p>Note that the above graph shows the <strong>relative</strong> number of milliseconds per frame, that is, the ratio of elapsed time to the lowest elapsed time for that method. This is done in an effort the normalize the results to better compare how each method is affected by block size. They all show significant slowdowns beginning at a block size of 32 or less. This may be happening because at 32 or fewer threads per block, there is only one warp (group of 32 threads) in a block. These smaller blocks mean that we need a larger number of blocks. With every warp in its own block, we lose the performance benefits of shared memory within a block and instead need to allocate memory for each of our very many blocks.</p>
@@ -196,7 +197,7 @@ export default class Projects extends React.Component {
             <p>The algorithm works by scattering point-sized markers over the area which the agents may occupy. At every timestep, markers will be assigned to the nearest agent within a specified radius. Then a weighting function is used to integrate the marker contributions in order to compute an agent&#39;s new velocity. This function is designed to be 1 when the marker is in the same direction as the agent&#39;s goal and 0 when the marker is in the opposite direction.</p>
             <p>The goal of my project was to design and create a shader-based implementation of the algorithm which would be fast enough to run in a browser.</p>
 
-            <div className='media'>
+            <div className={styles.media}>
               <video src='img/biocrowds.webm' controls autoPlay loop></video>
             </div>
 
@@ -222,8 +223,8 @@ export default class Projects extends React.Component {
             <h2>Introduction</h2>
             <p>FLIP/PIC is a hybrid fluid simulation method proposed by Yongning Zhu and Robert Bridson in <a href="https://www.cs.ubc.ca/~rbridson/docs/zhu-siggraph05-sandfluid.pdf">Animating Sand as a Fluid</a>. It is a combination of FLIP (fluid-implicit-particle) and PIC (particle-in-cell) techniques. One of the core ideas is that some computations are simpler from a Langrangian point of view (per particle), and some computations are simplier from an Eulerian point of view (per position in space). For fluids, keeping track of positions and velocities is much more straight forward with the former method, allowing us to easily keep track of particle positions and update them based on their velocities. However, computing pressure forces is simplified on a fixed uniform grid because it is much easier to compute divergences at fixed intervals in space.</p>
             <p>The FLIP/PIC method solves the problem by projecting fluid attributes onto a fixed grid, performing grid-level pressure and force computations, and then mapping velocities back to the original particles. The FLIP part of the name involves adding the CHANGE in grid cell velocity to the original particle while PIC simply sets the new particle velocity to that of the grid. The former results in more chaotic motion because original particle velocities are preserved while the latter results in a smoothing of the simulation. The solver which I chose to implement is 95% FLIP and 5% PIC.</p>
-            <div className='media aspect16x9'>
-              <iframe className='content' src="https://player.vimeo.com/video/176328477?autoplay=1&loop=1" width="100%" height="100%" frameBorder="0" allowFullScreen></iframe>
+            <div className={`${styles.media} ${mainStyles.aspect16x9}`}>
+              <iframe className={mainStyles.content} src="https://player.vimeo.com/video/176328477?autoplay=1&loop=1" width="100%" height="100%" frameBorder="0" allowFullScreen></iframe>
             </div>
 
             <h2>Overview</h2>
@@ -232,28 +233,28 @@ export default class Projects extends React.Component {
           <Project title="Monte Carlo Pathtracer" summary="C++ Monte Carlo pathtracer build from scratch. Supports multiple importance sampling, progressive rendering, sobol quasi-random sampling, and BVH acceleration" thumbnail="/img/renders/dragon_blinn_64spp_12min_BVHbuild_23sec.bmp">
             <h2>Introduction</h2>
               <p>Monte Carlo path tracing is a rendering technique which aims to represent global illumination as accurately as possible. It does this by approximating the integral of all the light arriving at a certain point by casting millions of rays (based on physical reflectance models) and combining their weighted contributions. Rays of light are reflected and transmitted as they do in real life, resulting in very physically plausible images.</p>
-              <div className='image-row clearfix'>
-                <div className='captioned-image'>
+              <div className={`${styles['image-row']} ${mainStyles.clearfix}`}>
+                <div className={styles['captioned-image']}>
                   <img src="/img/renders/dragon_mirror_64spp_15min_BVHbuild_17sec.bmp" />
-                  <div className="caption">
+                  <div className={styles.caption}>
                     Cornell box with Stanford dragon and Stanford bunny featuring mirror materials
                   </div>
                 </div>
-                <div className='captioned-image'>
+                <div className={styles['captioned-image']}>
                   <img src="/img/renders/refractive_spheres_64spp_3min.bmp" />
-                  <div className="caption">
+                  <div className={styles.caption}>
                     Cornell box featuring refractive spheres and caustic effects
                   </div>
                 </div>
-                <div className='captioned-image'>
+                <div className={styles['captioned-image']}>
                   <img src="/img/renders/various_materials_64spp_3min.bmp" />
-                    <div className="caption">
+                    <div className={styles.caption}>
                       Cornell box with objects of various materials
                     </div>
                 </div>
-                <div className='captioned-image'>
+                <div className={styles['captioned-image']}>
                   <img src="/img/renders/bunny.bmp" />
-                    <div className="caption">
+                    <div className={styles.caption}>
                       Stanford bunny with glossy floor
                     </div>
                 </div>
@@ -266,22 +267,22 @@ export default class Projects extends React.Component {
 
             <h2>Multiple Importance Sampling</h2>
             <p>Multiple importance sampling is a very important part of rendering. When calculating direct energy, we typically cast rays from our point of intersection to a random point on the surface of a light source. However, if our light source is large but the surface is extremely specular, most of those rays are not going to bounce in the direction of our camera. It will take very many samples to even get a reasonably accurate image. We're wasting a lot of computation! On the other hand, if we only use the surface's reflectance model, if the light is small, a rough surface will generate rays that actually hit that light source a very small percentage of the time. We get the sample problem! The solution is to use Multiple Importance Sampling: use both methods and combine them with a heuristic to calculate the direct energy reflected. Here's a recreation of the Veach scene and comparisons showing only BRDF or only Light sampling:</p>
-            <div className='image-row clearfix'>
-              <div className='captioned-image' style={{'width': '33%'}}>
+            <div className={`${styles['image-row']} ${mainStyles.clearfix}`}>
+              <div className={styles['captioned-image']} style={{'width': '33%'}}>
                 <img src="/img/renders/light_only.bmp" />
-                <div className="caption">
+                <div className={styles.caption}>
                   Light sampling only
                 </div>
               </div>
-              <div className='captioned-image' style={{'width': '33%'}}>
+              <div className={styles['captioned-image']} style={{'width': '33%'}}>
                 <img src="/img/renders/veach_64spp_5min.bmp" />
-                <div className="caption">
+                <div className={styles.caption}>
                   Multiple Importance Sampling
                 </div>
               </div>
-              <div className='captioned-image' style={{'width': '33%'}}>
+              <div className={styles['captioned-image']} style={{'width': '33%'}}>
                 <img src="/img/renders/brdf_only.bmp" />
-                  <div className="caption">
+                  <div className={styles.caption}>
                     BRDF sampling only
                   </div>
               </div>
@@ -289,16 +290,16 @@ export default class Projects extends React.Component {
 
             <h2>Approximate Agglomerative Clustering</h2>
             <p>Arguably one of the best ways to build a BVH is to use a bottom-up approach, merging the most optimal pair of nodes based on some heuristic function. The problem is, this is an extremely costly algorithm. If there are 100,000 nodes, it takes nCr(100,000, 2) evaluations of that heuristic function (once for every pair) to determine just one optimal pair. This is O(n3) to build the entire tree! <a href="http://www.cs.cmu.edu/~ygu1/paper/HPG13/HPG13.pdf">This paper</a> presents a novel idea, based on the idea that this operation is most expensive in the beginning of the construction when there are many, many nodes, and that many of those comparisons are very unnecessary. We know that the optimal pair of nodes will be physically close to each other, so there is little point in checking every single pair of nodes. Instead, we can first organize them in a lesser quality tree and use that as a bound to limit the number of comparisons we make at every iteration. The nodes are continually separated until we reach some maximum node size. Then, only those nodes in that cluster are compared pairwise and merged. The process is sped up by first sorting the nodes by their <a href="https://en.wikipedia.org/wiki/Z-order_curve">Morton code</a> which quickly and easily forms the data into an linear tree-like form.</p>
-            <div className='image-row clearfix'>
-              <div className='captioned-image' style={{'width': '50%'}}>
+            <div className={`${styles['image-row']} ${mainStyles.clearfix}`}>
+              <div className={styles['captioned-image']} style={{'width': '50%'}}>
                 <img src="/img/bvh/dragon.png" />
-                <div className="caption">
+                <div className={styles.caption}>
                   Stanford Dragon
                 </div>
               </div>
-              <div className='captioned-image' style={{'width': '50%'}}>
+              <div className={styles['captioned-image']} style={{'width': '50%'}}>
                 <img src="/img/bvh/bvh.png" />
-                <div className="caption">
+                <div className={styles.caption}>
                   Computed AACBVH Tree
                 </div>
               </div>
@@ -309,117 +310,117 @@ export default class Projects extends React.Component {
 
             <p>I've reworked my tree construction, making it more parameterizable and better templated so that it will hopefully be for flexible for future use. I ran tests on the Utah teapot (~1000 triangles), Stanford bunny (~5000 triangles), and Stanford dragon (~100000 triangles), logging the amount of time it took to build the tree and the average time for ray traversal.</p>
 
-            <div className='image-row clearfix'>
-              <div className='captioned-image'>
+            <div className={`${styles['image-row']} ${mainStyles.clearfix}`}>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/teapot_c10_b0.042409_t0.000211633.png"><img src="/img/bvh/teapot_c10_b0.042409_t0.000211633.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 10<br />
-            			Build Time: 42.409 ms<br />
-            			Average Raytrace: 0.211633 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 10<br />
+                  Build Time: 42.409 ms<br />
+                  Average Raytrace: 0.211633 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/teapot_c100_b0.089652_t0.000107177.png"><img src="/img/bvh/teapot_c100_b0.089652_t0.000107177.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 100<br />
-            			Build Time: 89.652 ms<br />
-            			Average Raytrace: 0.107177 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 100<br />
+                  Build Time: 89.652 ms<br />
+                  Average Raytrace: 0.107177 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/teapot_c1000_b0.417885_t8.54407e-05.png"><img src="/img/bvh/teapot_c1000_b0.417885_t8.54407e-05.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 1000<br />
-            			Build Time: 417.885 ms<br />
-            			Average Raytrace: 0.0854407 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 1000<br />
+                  Build Time: 417.885 ms<br />
+                  Average Raytrace: 0.0854407 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/teapot_c10000_b0.573137_t9.54002e-05.png"><img src="/img/bvh/teapot_c10000_b0.573137_t9.54002e-05.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 10000<br />
-            			Build Time: 573.135 ms<br />
-            			Average Raytrace: 0.0954002 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 10000<br />
+                  Build Time: 573.135 ms<br />
+                  Average Raytrace: 0.0954002 ms
+                </div>
               </div>
             </div>
-            <div className='image-row clearfix'>
-              <div className='captioned-image'>
+            <div className={`${styles['image-row']} ${mainStyles.clearfix}`}>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/bunny_low_c10_b0.137205_t0.00106669.png"><img src="/img/bvh/bunny_low_c10_b0.137205_t0.00106669.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 10<br />
-            			Build Time: 137.205 ms<br />
-            			Average Raytrace: 1.06669 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 10<br />
+                  Build Time: 137.205 ms<br />
+                  Average Raytrace: 1.06669 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/bunny_low_c100_b0.451929_t0.000328793.jpg"><img src="/img/bvh/bunny_low_c100_b0.451929_t0.000328793.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 100<br />
-            			Build Time: 451.929 ms<br />
-            			Average Raytrace: 0.328793 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 100<br />
+                  Build Time: 451.929 ms<br />
+                  Average Raytrace: 0.328793 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/bunny_low_c1000_b1.96188_t0.000149602.png"><img src="/img/bvh/bunny_low_c1000_b1.96188_t0.000149602.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 1000<br />
-            			Build Time: 1961.88 ms<br />
-            			Average Raytrace: 0.149602 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 1000<br />
+                  Build Time: 1961.88 ms<br />
+                  Average Raytrace: 0.149602 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/bunny_low_c10000_b9.2727_t0.000120217.png"><img src="/img/bvh/bunny_low_c10000_b9.2727_t0.000120217.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 10000<br />
-            			Build Time: 9272.7 ms<br />
-            			Average Raytrace: 0.120217 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 10000<br />
+                  Build Time: 9272.7 ms<br />
+                  Average Raytrace: 0.120217 ms
+                </div>
               </div>
             </div>
-            <div className='image-row clearfix'>
-              <div className='captioned-image'>
+            <div className={`${styles['image-row']} ${mainStyles.clearfix}`}>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/dragon_c10_b2.24062_t0.0196656.png"><img src="/img/bvh/dragon_c10_b2.24062_t0.0196656.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 10<br />
-            			Build Time: 2240.62 ms<br />
-            			Average Raytrace: 19.6656 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 10<br />
+                  Build Time: 2240.62 ms<br />
+                  Average Raytrace: 19.6656 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/dragon_c100_b9.64125_t0.00198559.png"><img src="/img/bvh/dragon_c100_b9.64125_t0.00198559.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 100<br />
-            			Build Time: 964.125 ms<br />
-            			Average Raytrace: 1.98559 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 100<br />
+                  Build Time: 964.125 ms<br />
+                  Average Raytrace: 1.98559 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/dragon_c1000_b46.9278_t0.000392493.png"><img src="/img/bvh/dragon_c1000_b46.9278_t0.000392493.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 1000<br />
-            			Build Time: 46927.8 ms<br />
-            			Average Raytrace: 0.392493 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 1000<br />
+                  Build Time: 46927.8 ms<br />
+                  Average Raytrace: 0.392493 ms
+                </div>
               </div>
-              <div className='captioned-image'>
+              <div className={styles['captioned-image']}>
                 <a href="/img/bvh/dragon_c10000_b385.871_t0.000161021.png"><img src="/img/bvh/dragon_c10000_b385.871_t0.000161021.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 10000<br />
-            			Build Time: 385871 ms<br />
-            			Average Raytrace: 0.161021 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 10000<br />
+                  Build Time: 385871 ms<br />
+                  Average Raytrace: 0.161021 ms
+                </div>
               </div>
             </div>
 
-            <div className='image-row clearfix'>
-              <div className='captioned-image' style={{'margin': 'auto', 'width': '75%', 'float': 'none'}}>
+            <div className={`${styles['image-row']} ${mainStyles.clearfix}`}>
+              <div className={styles['captioned-image']} style={{'margin': 'auto', 'width': '75%', 'float': 'none'}}>
                 <a href="/img/bvh/dragon_c100000_b4513.11_t0.000128856.png"><img src="/img/bvh/dragon_c100000_b4513.11_t0.000128856.jpg" /></a>
-            		<div className="caption">
-            			Cluster Size: 100000<br />
-            			Build Time: 4513110 ms<br />
-            			Average Raytrace: 0.128856 ms
-            		</div>
+                <div className={styles.caption}>
+                  Cluster Size: 100000<br />
+                  Build Time: 4513110 ms<br />
+                  Average Raytrace: 0.128856 ms
+                </div>
               </div>
             </div>
 
@@ -432,60 +433,60 @@ export default class Projects extends React.Component {
           <Project title="Mini Maya" summary="A mini 3D modeling program built as an introduction to the fundamentals of computer graphics" thumbnail="/img/minimaya/test-render.bmp">
             <h2>Introduction</h2>
             <p>Mini Maya is a cumulative project which I worked on in my freshman year of college for CIS 460 (Introduction to Computer Graphics). The main languages used for developement were C++, OpenGL, and GLSL. Throughout the course of the semester, we developed features which utilized fundamental concepts in computer graphics. I went on to augment my project, implementing many other concepts and ideas which I found interesting or useful. To maintain the integrity of the course, I will document the various aspects of the project here, but refrain from disclosing code or specfic implementation details.</p>
-        		<p>While working on this project, I found that the hardest part was not building any particular feature, but rather keeping my code flexible and efficient enough to accomodate all the different components.</p>
+            <p>While working on this project, I found that the hardest part was not building any particular feature, but rather keeping my code flexible and efficient enough to accomodate all the different components.</p>
 
             <h2>Mesh Creation / Import</h2>
             <p>Various meshes can be automatically created within Mini Maya. Simple meshes are generated by simply creating vertices and creating faces and edges between them. More complex built-in meshes just use Mini Maya's OBJ importer to import and create a mesh.</p>
-        		<p>Meshes in Mini Maya are represented with a half-edge data structure. OpenGL vertex and index buffers are generated whenever mesh geometry changes for drawing.</p>
+            <p>Meshes in Mini Maya are represented with a half-edge data structure. OpenGL vertex and index buffers are generated whenever mesh geometry changes for drawing.</p>
 
             <h2>Transformation Controls</h2>
             <p>Mini Maya supports the standard transformation controls: translate, rotate, and scale. Keyboard shortcuts make it easy to toggle between these modes as well as lock onto the global X/Y/Z and local X/Y/Z axes. Control of the transformation is done using the mouse (implemented with much inspiration from Ken Shoemake's <a href="https://www.talisman.org/~erlkonig/misc/shoemake92-arcball.pdf">arcball paper</a>). In a similar fashion, the camera can be easily moved and rotated. All rotations are stored as quaternions to prevent problems with gimbal lock.</p>
-        		<p>The transformation tool avoids accumlating rounding errors and allows for cancellation by storing both the old and new transformation in each object node. New transformations are always used for drawing, but the old transformation is kept to allow the user to undo or reset transformations.</p>
+            <p>The transformation tool avoids accumlating rounding errors and allows for cancellation by storing both the old and new transformation in each object node. New transformations are always used for drawing, but the old transformation is kept to allow the user to undo or reset transformations.</p>
 
-            <div className='media'>
+            <div className={styles.media}>
               <img src='/img/minimaya/transformation-controls.gif' />
             </div>
 
             <h2>Mesh Editing Tools</h2>
             <p>Various mesh editing tools were implemented for Mini Maya. Mesh components (faces, edges, and vertices) can be transformed using the same methods described transforming objects. Other features include:</p>
-        		<ul>
-        			<li>Face Extrusion</li>
-        			<li>Triangulation</li>
-        			<li>Edge Split</li>
-        			<li>Catmull-Clark Subdivision</li>
-        			<li>Face/Edge/Vertex Deletion</li>
-        		</ul>
-        		<p>Mouse selection of mesh components was accomplished by either raycasting or reading from a selection ID buffer created in a shader.</p>
+            <ul>
+              <li>Face Extrusion</li>
+              <li>Triangulation</li>
+              <li>Edge Split</li>
+              <li>Catmull-Clark Subdivision</li>
+              <li>Face/Edge/Vertex Deletion</li>
+            </ul>
+            <p>Mouse selection of mesh components was accomplished by either raycasting or reading from a selection ID buffer created in a shader.</p>
 
-            <div className='media'>
+            <div className={styles.media}>
               <img src='/img/minimaya/mesh-editing.gif' />
             </div>
 
             <h2>Scene Graph / Inheritance</h2>
             <p>Objects are stored in a tree, making easy transformation inheritance. To reduce computation, the full global transformation matrix is stored for every object. When the draw call is made, this matrix is used to compute the vertex positions of the mesh. When objects are transformed, only its full transformation and those of its children are updated. I found this to be significantly faster than simply storing local transformations and recomputing global transformations at every draw call. Storing global transformations also optimizes future computations such as those used when raycasting or ray tracing.</p>
 
-            <div className='media'>
+            <div className={styles.media}>
               <img src='/img/minimaya/scene-graph.gif' />
             </div>
 
             <h2>Material Editor</h2>
             <p>Materials are assigned to objects on a per-face basis. After assigning materials, they can easily be changed and the viewport will update in realtime. To accomplish this, a map of materials to objects is maintained so that when materials are updated, the proper vertex color buffers can be updated. Materials can have diffuse, transparent, reflective, and refractive components.</p>
 
-            <div className='media'>
+            <div className={styles.media}>
               <img src='/img/minimaya/material-editing.gif' />
             </div>
 
             <h2>Spatial Acceleration Structures</h2>
             <p>For this project, I first implemented an octree, then a k-D tree, and then finally a BVH tree. Although the k-D tree often resulted in faster tree traversal, I found the BVH tree to be significantly more effective because it was a lot easier to dynamically update the tree when meshes moved or were edited. Building the k-D tree took much longer, especially when there were many meshes close together. When rendering, I've gotten mixed results using BVH and k-D trees. I find that sparser scenes tend to perform much better with a BVH tree than with a k-D tree.</p>
 
-            <div className='media'>
+            <div className={styles.media}>
               <img src='/img/minimaya/bvh.gif' />
             </div>
 
             <h2>Selection</h2>
             <h4>Raycast Selection</h4>
             <p>Selection was initially accomplished by raycasting. Rays where cast from the camera into the scene and the first object encountered was then selected. Mini Maya maintains a selection list so that multiple objects can be selected at once. Operations, such as parenting, can then be applied to that list of objects.</p>
-        		<p>To show that objects were selected, booleans were sent to the GLSL shader to denote whether or not objects or mesh components were selected. They would then be drawn in an orange color to indicate this. I found this much better than changing the vertex colors in my buffers because I knew that I would need to change them back once I deselected the object. I felt that this frequent switch was unecessary. A simple color override in the shader was a lot easier.</p>
+            <p>To show that objects were selected, booleans were sent to the GLSL shader to denote whether or not objects or mesh components were selected. They would then be drawn in an orange color to indicate this. I found this much better than changing the vertex colors in my buffers because I knew that I would need to change them back once I deselected the object. I felt that this frequent switch was unecessary. A simple color override in the shader was a lot easier.</p>
 
             <h4>GPU Accelerated Selection</h4>
             <p>As meshes became more complex (and before I had a good spatial acceleration structure), I began to realize that raycasting could become very, very slow. I solved this problem by giving every object, component, or anything that is drawn a unique object ID. This ID was hashed as a color and drawn to an offscreen buffer. Now when the user clicks, the program simply gets the coordinates of the click, gets the color of the pixel, and looks up the respective object in a table. This greatly sped up selection times, especially with more complex meshes.</p>
@@ -493,7 +494,7 @@ export default class Projects extends React.Component {
             <h2>Ray Tracing</h2>
             <p>Mini Maya renders images with a simple raytracer. Rays are cast from the camera and bounce off surfaces a maximum of 10 times. These bounces are used to calculate the pixel color. The renderer also supports antialiasing (supersampling) and successfully renders shadows, reflections, refraction, and glossy surfaces.</p>
 
-            <div className='media'>
+            <div className={styles.media}>
               <img src="/img/minimaya/test-render.bmp" />
             </div>
 

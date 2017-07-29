@@ -8,7 +8,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducer from './reducer'
 
-module.exports = function render(locals, callback) {
+export default function render(locals, callback) {
   const store = createStore(reducer, locals)
 
   let html

@@ -7,7 +7,6 @@ import { createStore } from 'redux'
 import reducer from './reducer'
 
 const store = createStore(reducer, require('./data'))
-console.log(store.getState())
 
 if (typeof document !== 'undefined') {
   render(
