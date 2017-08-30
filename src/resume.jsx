@@ -101,7 +101,7 @@ export default class Resume extends React.Component {
                 <ul>
                   <li><strong>Implemented the D3D12 backend</strong> for NXT: Google's prototype of a next-generation web graphics API. NXT is a portable graphics API which maps efficiently onto native explicit APIs such as D3D12, Metal, and Vulkan.</li>
                   <li>Studied <strong>explicit graphics APIs (D3D12, Metal, Vulkan)</strong>, and <strong>designed and implemented API features</strong> for fixed function graphics state on D3D12, Metal, and OpenGL backends.</li>
-                  <li>Contributed to SPRIV-Cross, implementing <strong>SPIR-V transpilation support for HLSL compute shaders</strong> and HLSL Shader Model 5.1.</li>
+                  <li>Contributed to shader translation, implementing <strong>SPIR-V transpilation support for HLSL compute shaders</strong>.</li>
                 </ul>
               </Role>
             </Experience>
