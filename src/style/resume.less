@@ -14,6 +14,9 @@
 
   @media print {
     margin: 0;
+    a {
+      text-decoration: none;
+    }
   }
 
   @col-bg: #1b1b1b;
@@ -59,25 +62,31 @@
     position: relative;
   }
 
+  header {
+    padding-bottom: 10px;
+  }
+
   #head {
     .dot {
       color: @col-main;
     }
     h1 {
-      font-size: 60px;
+      font-size: 45px;
       letter-spacing: 26px;
       margin: 0;
       text-transform: uppercase;
     }
     h2 {
-      font-size: 30px;
+      font-size: 24px;
       text-transform: uppercase;
-      letter-spacing: 3.3px;
+      letter-spacing: 3.7px;
     }
     h3 {
-      font-size: 13px;
+      font-size: 10px;
+      letter-spacing: 0.95px;
       text-transform: uppercase;
       a {
+        letter-spacing: inherit;
         font-family: Raleway;
       }
     }

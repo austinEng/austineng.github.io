@@ -39,7 +39,7 @@ export default class Splash extends React.Component {
         <div className={`${styles.title} ${mainStyles.container}`}>
           <img id={styles.logo} src='logo.png' />
           <h1>Austin Eng</h1>
-          <h2>Software Engineer <span style={{'color':'#d3d3d3'}}>&#183;</span> University of Pennsylvania &#39;18</h2>
+          <h2>Software Engineer at Google <span style={{'color':'#d3d3d3'}}>&#183;</span> University of Pennsylvania &#39;18</h2>
           <div ref='contactBar' className={styles['contact-bar']}>
             <a id={styles.linkedin} href='//www.linkedin.com/in/austineng'>
             </a>
@@ -47,7 +47,8 @@ export default class Splash extends React.Component {
             </a>
           </div>
           <br />
-          <a href='/resume.pdf' style={{'textDecoration': 'none', 'fontSize':'20px'}}>Resume</a>
+          <a href='/resume' style={{'textDecoration': 'none', 'fontSize':'20px'}}>Resume</a>&nbsp;&#183;&nbsp;
+          <a href='/resume.pdf' style={{'textDecoration': 'none', 'fontSize':'20px'}}>PDF</a>
         </div>
       </div>
     )

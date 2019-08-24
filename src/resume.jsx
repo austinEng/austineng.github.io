@@ -72,7 +72,7 @@ export default class Resume extends React.Component {
         </head>
         <body id={styles.resume}>
           <header id={styles.head}>
-            <img src='/logo.svg' />
+            {/* <img src='/logo.svg' /> */}
             <h1>Austin Eng</h1>
             <h2>Software & Graphics Engineer</h2>
             <h3>
@@ -94,14 +94,17 @@ export default class Resume extends React.Component {
           <Section name="Experience">
             <Experience
               location="Google"
-              time="May - August 2017">
+              time="May - August 2017 · September 2018 - Present">
               <Role
-                role="Chrome GPU Software Engineering Intern"
-                skills="C++ · D3D12 · Metal · OpenGL">
+                role="Chrome GPU Software Engineer"
+                // skills="C++ · Vulkan · D3D12 · Metal · OpenGL"
+              >
                 <ul>
-                  <li><strong>Implemented the D3D12 backend</strong> for NXT: Google's prototype of a next-generation web graphics API. NXT is a portable graphics API which maps efficiently onto native explicit APIs such as D3D12, Metal, and Vulkan.</li>
-                  <li>Studied <strong>explicit graphics APIs (D3D12, Metal, Vulkan)</strong>, and <strong>designed and implemented API features</strong> for fixed function graphics state on D3D12, Metal, and OpenGL backends.</li>
+                  <li><strong>Implemented the initial D3D12 backend</strong> for <a href="https://dawn.googlesource.com/dawn">Dawn</a>: Google's implementation of the <a href="https://gpuweb.github.io/gpuweb/">WebGPU API</a>. Dawn is a portable C++ library which maps efficiently onto native APIs D3D12, Metal, and Vulkan. Implemented various API features for D3D12, Metal, Vulkan, and OpenGL backends.</li>
+                  <li>Designed and implemented <strong>efficient data transfer using shared memory</strong> and <strong>cross-process memory mapping</strong> to integrate Dawn into Chrome's multiprocess architecture.</li>
+                  <li></li>
                   <li>Contributed to shader translation, implementing <strong>SPIR-V transpilation support for HLSL compute shaders</strong>.</li>
+                  <li>Designed and implemented <a href="https://www.khronos.org/registry/webgl/extensions/WEBGL_multi_draw/">MultiDraw extensions</a> in both Chrome and ANGLE to enable applications to more efficiently submit draw calls, <strong>reducing CPU usage by 6x</strong>.</li>
                 </ul>
               </Role>
             </Experience>
@@ -110,11 +113,12 @@ export default class Resume extends React.Component {
               time="January - May 2017">
               <Role
                 role="Cesium 3D Software Development Intern"
-                skills="WebGL · Javascript">
+                // skills="WebGL · Javascript"
+              >
                 <ul>
                   <li>Contributed various features and optimizations to Cesium's rendering engine and 3D Tiles.</li>
-                  <li>Optimized <strong>loading of heirarchical level of detail meshes</strong> to <strong>reduce data usage by 30-50%</strong>.</li>
-                  <li>Developed methods for <strong>accurate and simulatenous rendering of heterogenous and multi-resolution meshes</strong> without visual artifacts through the application of a <strong>Bivariate Visibility Test</strong> (patent pending).</li>
+                  <li>Optimized <a href="https://cesium.com/blog/2017/05/05/skipping-levels-of-detail/"><strong>loading of heirarchical level of detail meshes</strong></a> to <strong>reduce data usage by 30-50%</strong>.</li>
+                  <li>Developed and <a href="https://patents.google.com/patent/US9865085B1/en">patented methods</a> for <strong>accurate and simulatenous rendering of heterogenous and multi-resolution meshes</strong> without visual artifacts through the application of a <strong>Bivariate Visibility Test</strong>.</li>
                   <li>Investigated tile <strong>request scheduling with HTTP/2</strong> to <strong>reduce load times by 25%</strong>.</li>
                 </ul>
               </Role>
@@ -124,7 +128,8 @@ export default class Resume extends React.Component {
               time="June - August 2016">
               <Role
                 role="Department Technical Director Intern"
-                skills="Python">
+                // skills="Python"
+              >
                 <ul>
                   <li>Developed <strong>tools and plugins to improve workflow</strong> for the lighting department with PyQt.</li>
                   <li><strong>Optimized execution</strong> of render submissions and <strong>improved error reporting and logging</strong> of jobs.</li>
@@ -137,7 +142,8 @@ export default class Resume extends React.Component {
               time="June - August 2015">
               <Role
                 role="Art and Production Intern"
-                skills={"Python · Houdini · Maya"}>
+                // skills={"Python · Houdini · Maya"}
+              >
                 <ul>
                   <li>Learned the entire animation pipeline through the <strong>production of a short film</strong>.</li>
                   <li>Specialized in procedural modeling, effects, and technical animation in Houdini.</li>
@@ -147,7 +153,8 @@ export default class Resume extends React.Component {
             </Experience>
             <Experience
               location="Artsicle"
-              time="January 2014 - May 2014">
+              // time="January 2014 - May 2014"
+            >
               <Role
                 role="Full Stack Web Developer"
                 skills={"Ruby · JavaScript · CSS · HTML"}>
@@ -161,7 +168,7 @@ export default class Resume extends React.Component {
           </Section>
           <Section name="Achievements">
             <Experience
-              location="Patent Pending"
+              location="Patent"
               time="May 2017">
               <Role
                 role="Systems and Methods for 3D Modeling Using Skipping Heuristics and Fusing">
@@ -181,7 +188,7 @@ export default class Resume extends React.Component {
                   <li>GPA: 3.94</li>
                 </ul>
               </Role>
-              <Role role="Mastor of Science and Engineering" skills="Computer & Information Science" />
+              {/* <Role role="Mastor of Science and Engineering" skills="Computer & Information Science" /> */}
               <Role role="Computer Graphics TA" skills="C++ · OpenGL · GLSL" />
             </Experience>
           </Section>
@@ -189,7 +196,8 @@ export default class Resume extends React.Component {
             <Experience location="Simulation">
               <Role
                 role="GPU Flocking Simulation"
-                skills={"Vulkan · CUDA · C++"}>
+                // skills={"Vulkan · CUDA · C++"}
+              >
                 <ul>
                   <li>Implemented a <strong>crowd simulation algorithm</strong> in both <strong>CUDA kernels and Vulkan compute shaders</strong>. Both easily handle <strong>half a million agents</strong> at over <strong>60fps</strong>.</li>
                 </ul>
@@ -197,7 +205,8 @@ export default class Resume extends React.Component {
 
               <Role
                 role="WebGL Crowd Simulation Engine"
-                skills={"Javascript · WebGL"}>
+                // skills={"Javascript · WebGL"}
+              >
                 <ul>
                   <li><strong>Realtime, 60fps, GPGPU crowd simulation engine</strong> which computes <strong>on-the-fly, collision-free trajectories</strong> for hundreds of agents in a web browser.</li>
                   <li>Optimized by formulating computations as <strong>constant-time shaders</strong> executing over a uniform grid.</li>
@@ -206,7 +215,8 @@ export default class Resume extends React.Component {
 
               <Role
                 role="Physically-based FLIP/PIC Fluid Solver"
-                skills={"C++ · OpenGL · WebGL · GLSL"}>
+                // skills={"C++ · OpenGL · WebGL · GLSL"}
+              >
                 <ul>
                   <li>Highly <strong>concurrent C++ fluid solver</strong> built from scratch implementing the FLIP/PIC fluid simulation method.</li>
                   <li>Implemented a separate <strong>WebGL FLIP/PIC solver</strong> capable of running at <strong>interactive rates in a web browser</strong>.</li>
@@ -217,7 +227,8 @@ export default class Resume extends React.Component {
             <Experience location="Rendering">
               <Role
                 role="Physically-based Monte Carlo Pathtracer"
-                skills={"C++ · OpenGL"}>
+                // skills={"C++ · OpenGL"}
+              >
                 <ul>
                   <li>Highly <strong>concurrent C++ Monte Carlo pathtracer</strong> built from scratch.</li>
                   <li>Supports BVH spatial acceleration, multiple importance sampling, progressive rendering, sobol sampling.</li>
@@ -226,7 +237,8 @@ export default class Resume extends React.Component {
 
               <Role
                 role="WebGL Deferred Shading"
-                skills={"Javascript · WebGL · GLSL"}>
+                // skills={"Javascript · WebGL · GLSL"}
+              >
                 <ul>
                   <li>Implemented a WebGL rendering engine with deferred shading.</li>
                 </ul>

@@ -31,7 +31,7 @@ class Index extends React.Component {
         </head>
         <body className={classnames({[styles.open]: this.props.open})}>
           <Splash />
-          <Projects />
+          {/* <Projects /> */}
           <script src='main.js'></script>
         </body>
       </html>
