@@ -6,7 +6,8 @@ export default class Splash extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      height: '100vh'
+      height: '100vh',
+      loaded: false,
     }
   }
 
@@ -17,7 +18,10 @@ export default class Splash extends React.Component {
     let email_link = document.createElement('a')
     email_link.setAttribute('href', 'mailto:' + 'austineng' + '.' + 'inr' + '@' + 'gmail' + '.' + 'com')
     email_link.setAttribute('id', styles.email)
-    this.refs.contactBar.appendChild(email_link)
+
+    this.setState({
+      loaded: true,
+    });
   }
 
   componentWillUmmount() {
@@ -47,8 +51,13 @@ export default class Splash extends React.Component {
             </a>
           </div>
           <br />
-          <a href='/resume' style={{'textDecoration': 'none', 'fontSize':'20px'}}>Resume</a>&nbsp;&#183;&nbsp;
-          <a href='/resume.pdf' style={{'textDecoration': 'none', 'fontSize':'20px'}}>PDF</a>
+          {this.state.loaded ? (
+            <div>
+              <a href='/resume' style={{ 'textDecoration': 'none', 'fontSize': '20px' }}>Resume</a>
+              <span>&nbsp;&#183;&nbsp;</span>
+              <a href='/resume.pdf' style={{ 'textDecoration': 'none', 'fontSize': '20px' }}>PDF</a>
+            </div>
+          ) : null}
         </div>
       </div>
     )

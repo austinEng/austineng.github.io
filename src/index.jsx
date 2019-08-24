@@ -27,6 +27,7 @@ class Index extends React.Component {
           <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
           <link rel='stylesheet' type='text/css' href='main.css' />
           <link rel='icon' href='logo.png' />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
         </head>
         <body className={classnames({[styles.open]: this.props.open})}>
