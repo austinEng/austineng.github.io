@@ -87,8 +87,8 @@ export default class Resume extends React.Component {
           </header>
           <Section name="Skills">
             <div className={styles.item}>
-              <h2>C++<Dot/>D3D12/Vulkan/Metal<Dot/>OpenGL/WebGL<Dot/>GLSL/HLSL<Dot />JavaScript<Dot/>HTML/CSS</h2>
-              <h3>CUDA<Dot/>Java<Dot/>Python<Dot/>Houdini<Dot/>Maya<Dot/>Ruby</h3>
+              <h2>C++<Dot/>D3D12/Vulkan/Metal<Dot/>WebGPU<Dot/>OpenGL/WebGL<Dot/>JavaScript<Dot/>HTML/CSS</h2>
+              <h3>GLSL/HLSL<Dot />CUDA<Dot/>Java<Dot/>Python<Dot/>Houdini<Dot/>Maya<Dot/>Ruby</h3>
             </div>
           </Section>
           <Section name="Experience">
@@ -100,9 +100,9 @@ export default class Resume extends React.Component {
                 // skills="C++ · Vulkan · D3D12 · Metal · OpenGL"
               >
                 <ul>
-                  <li><strong>Implemented the initial D3D12 backend</strong> for <a href="https://dawn.googlesource.com/dawn">Dawn</a>: Google's implementation of the <a href="https://gpuweb.github.io/gpuweb/">WebGPU API</a>. Dawn is a portable C++ library which maps efficiently onto native APIs D3D12, Metal, and Vulkan. Implemented various API features for D3D12, Metal, Vulkan, and OpenGL backends.</li>
+                  <li>Core contributor to <a href="https://dawn.googlesource.com/dawn">Dawn</a>: Google's implementation of the <a href="https://gpuweb.github.io/gpuweb/">WebGPU API</a>. Dawn is a portable C++ library which maps efficiently onto native APIs D3D12, Metal, and Vulkan.<br /><strong>Implemented the initial D3D12 backend</strong> for Dawn, and now continue to <strong>drive API features and optimizations</strong> for D3D12, Metal, Vulkan, and OpenGL backends.<br /><strong>Direct contributions</strong> of 10+ contributors to ensure high code quality.</li>
+                  <li>Prototyped and designed <strong>novel V8 to C++ bindings</strong>, making JavaScript API calls for WebGL, WebGPU, and other Web APIs up to <strong>300% faster</strong>.</li>
                   <li>Designed and implemented <strong>efficient data transfer using shared memory</strong> and <strong>cross-process memory mapping</strong> to integrate Dawn into Chrome's multiprocess architecture.</li>
-                  <li></li>
                   <li>Contributed to shader translation, implementing <strong>SPIR-V transpilation support for HLSL compute shaders</strong>.</li>
                   <li>Designed and implemented <a href="https://www.khronos.org/registry/webgl/extensions/WEBGL_multi_draw/">MultiDraw extensions</a> in both Chrome and ANGLE to enable applications to more efficiently submit draw calls, <strong>reducing CPU usage by 6x</strong>.</li>
                 </ul>
@@ -173,6 +173,7 @@ export default class Resume extends React.Component {
               <Role
                 role="Systems and Methods for 3D Modeling Using Skipping Heuristics and Fusing">
                 <ul>
+                  <li><a href="https://patents.google.com/patent/US9865085B1/en">Patent US9865085B1</a></li>
                   <li><strong>Data­-efficient loading and traveral of hierarchical level­-of-­detail trees</strong> utilizing screen space error, to <strong>skip levels-of-detail without incurring visual artifacts</strong>.</li>
                   <li><strong>Accurate rendering of overlapping heterogenous surfaces</strong> through the application of a <strong>Bivariate Visibility Test</strong>.</li>
                 </ul>
