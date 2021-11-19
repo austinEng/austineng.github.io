@@ -51,7 +51,7 @@ export default class Splash extends React.Component {
             </a>
           </div>
           <br />
-          {this.state.loaded ? (
+          {this.state.loaded && false ? (
             <div>
               <a href='/resume' style={{ 'textDecoration': 'none', 'fontSize': '20px' }}>Resume</a>
               <span>&nbsp;&#183;&nbsp;</span>
