@@ -76,7 +76,7 @@ export default class Resume extends React.Component {
             <h1>Austin Eng</h1>
             <h2>Software & Graphics Engineer</h2>
             <h3>
-              <a href='//austin-eng.co'>austin-eng.co</a>
+              <a href='//austin-eng.com'>austin-eng.com</a>
               <Dot />
               <a href='//github.com/austineng'>github.com/austineng</a>
               <Dot />
@@ -85,12 +85,6 @@ export default class Resume extends React.Component {
               732.737.7839
             </h3>
           </header>
-          <Section name="Skills">
-            <div className={styles.item}>
-              <h2>C++<Dot/>D3D12/Vulkan/Metal<Dot/>WebGPU<Dot/>OpenGL/WebGL<Dot/>JavaScript<Dot/>HTML/CSS</h2>
-              <h3>GLSL/HLSL<Dot />CUDA<Dot/>Java<Dot/>Python<Dot/>Houdini<Dot/>Maya<Dot/>Ruby</h3>
-            </div>
-          </Section>
           <Section name="Experience">
             <Experience
               location="Google"
@@ -100,10 +94,10 @@ export default class Resume extends React.Component {
                 // skills="C++ · Vulkan · D3D12 · Metal · OpenGL"
               >
                 <ul>
-                  <li>Core contributor to <a href="https://dawn.googlesource.com/dawn">Dawn</a>: Google's implementation of the <a href="https://gpuweb.github.io/gpuweb/">WebGPU API</a>. Dawn is a portable C++ library which maps efficiently onto native APIs D3D12, Metal, and Vulkan.<br /><strong>Implemented the initial D3D12 backend</strong> for Dawn, and now continue to <strong>drive API features and optimizations</strong> for D3D12, Metal, Vulkan, and OpenGL backends.<br /><strong>Direct contributions</strong> of 10+ contributors to ensure high code quality.</li>
-                  <li>Prototyped and designed <strong>novel V8 to C++ bindings</strong>, making JavaScript API calls for WebGL, WebGPU, and other Web APIs up to <strong>300% faster</strong>.</li>
-                  <li>Designed and implemented <strong>efficient data transfer using shared memory</strong> and <strong>cross-process memory mapping</strong> to integrate Dawn into Chrome's multiprocess architecture.</li>
-                  <li>Contributed to shader translation, implementing <strong>SPIR-V transpilation support for HLSL compute shaders</strong>.</li>
+                  <li><strong>Technical lead</strong> for <a href="https://dawn.googlesource.com/dawn">Dawn</a>: Google's implementation of the <a href="https://gpuweb.github.io/gpuweb/">WebGPU API</a>. Dawn is a portable C++ library which maps efficiently onto native APIs D3D12, Metal, Vulkan, OpenGL, OpenGLES, and D3D11.</li><li><strong>Developed</strong> significant portions of the implementation, and <strong>guide contributions</strong> from <strong>15+ contributors</strong> across multiple partner companies to ensure high code quality. Mentor multiple individuals on the project.</li>
+                  <li><strong>Architected and implemented</strong> efficient integration into Chromium's multiprocess architecture to ensure low-overhead data transfer with cross-process GPU memory mapping.</li>
+                  <li><strong>Advocated</strong> for and <strong>partnered</strong> with infrastructure teams to build more reliable, automated test infrastructure to improve developer productivity.</li>
+                  <li>Prototyped, designed, and launched <strong>novel V8 to C++ bindings</strong>, making JavaScript API calls for WebGL, WebGPU, and other Web APIs up to <strong>300% faster</strong>. Improvements yielded <strong>12% CPU time reductions</strong> in WebGL applications.</li>
                   <li>Designed and implemented <a href="https://www.khronos.org/registry/webgl/extensions/WEBGL_multi_draw/">MultiDraw extensions</a> in both Chrome and ANGLE to enable applications to more efficiently submit draw calls, <strong>reducing CPU usage by 6x</strong>.</li>
                 </ul>
               </Role>
@@ -153,11 +147,12 @@ export default class Resume extends React.Component {
             </Experience>
             <Experience
               location="Artsicle"
-              // time="January 2014 - May 2014"
+              time="January - May 2014"
             >
               <Role
                 role="Full Stack Web Developer"
-                skills={"Ruby · JavaScript · CSS · HTML"}>
+                // skills={"Ruby · JavaScript · CSS · HTML"}
+              >
                 <ul>
                   <li>Developed <strong>MVC architecture</strong> for new features to assist artists in promoting their work.</li>
                   <li><strong>Improved caching efficiency</strong> with modifications to the Cashier gem.</li>
@@ -190,10 +185,10 @@ export default class Resume extends React.Component {
                 </ul>
               </Role>
               {/* <Role role="Mastor of Science and Engineering" skills="Computer & Information Science" /> */}
-              <Role role="Computer Graphics TA" skills="C++ · OpenGL · GLSL" />
+              {/* <Role role="Computer Graphics TA" skills="C++ · OpenGL · GLSL" /> */}
             </Experience>
           </Section>
-          <Section name="Projects">
+          {/* <Section name="Projects">
             <Experience location="Simulation">
               <Role
                 role="GPU Flocking Simulation"
@@ -245,6 +240,12 @@ export default class Resume extends React.Component {
                 </ul>
               </Role>
             </Experience>
+          </Section> */}
+          <Section name="Skills">
+            <div className={styles.item}>
+              <h2>C++<Dot />D3D12/Vulkan/Metal<Dot />WebGPU<Dot />OpenGL/WebGL<Dot />JavaScript<Dot />HTML/CSS</h2>
+              <h3>GLSL/HLSL<Dot />CUDA<Dot />Java<Dot />Python<Dot />Houdini<Dot />Maya<Dot />Ruby</h3>
+            </div>
           </Section>
         </body>
       </html>
